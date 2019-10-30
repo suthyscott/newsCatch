@@ -4,7 +4,8 @@ import ArticleDisplay from '../ArticleDisplay/ArticleDisplay';
 
 const config = require('../../Config');
 
-function Home(){
+function Home(props){
+    // console.log(props)
     const [feed, setFeed] = useState([])
     const [search, setSearch] = useState('')
 

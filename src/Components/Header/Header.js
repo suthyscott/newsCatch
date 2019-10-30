@@ -11,11 +11,12 @@ function Header(props){
     const [login, setLogin] = useState(false)
     const [userEmail, setUserEmail] = useState('')
     const [userPassword, setUserPassword] = useState('')
-    console.log(props)
+    const [blockAccess, setBlockAccess] = useState(false)
+    console.log(blockAccess)
     
 
     useEffect(() => {
-        // console.log('hit useEffect', props)
+        console.log('hit useEffect', props)
         if(!props.user.email){
             // console.log('hit')
             axios.get('/api/auth/user')
@@ -23,7 +24,16 @@ function Header(props){
             props.updateUser(res.data)
         })
         .catch(err => console.log(err))
-        }
+        }        
+    }, [])
+
+    useEffect(() => {
+        console.log('hit useEffect2', props)
+        if(!props.user.email){
+            setBlockAccess(true)
+        } else {
+            setBlockAccess(false)
+        }        
     }, [])
 
     const toggleMenu = () => {
@@ -33,6 +43,11 @@ function Header(props){
     const toggleLogin = () => {
         setLogin(!login)
     }
+
+    const handleSendBack = () => {
+        props.history.push('/')
+    }
+
 
     const handleLoginUser = () => {
         axios.post('/api/auth/login', {email: userEmail, password: userPassword})
@@ -54,7 +69,7 @@ function Header(props){
     }
     // console.log(props)
 
-    if(props.location.pathname !== '/' && props.location.pathname !=='/register'){
+    if(props.location.pathname !== '/' && props.location.pathname !=='/register' && blockAccess === false){
     return(
         <main  className='header'>
             
@@ -117,6 +132,13 @@ function Header(props){
                     </div>
                 )}
         </main>
+    )
+} else if (props.location.pathname !== '/' && props.location.pathname !=='/register' && blockAccess === true) {
+    return(
+        <div>
+            {alert("Must be authorized to access this url. Please go back and log in.")}
+            {handleSendBack()}
+        </div>
     )
 } else {
     return(

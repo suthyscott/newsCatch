@@ -59,6 +59,21 @@ h1 {
     right: 0;
     width: 50vw;        
 }
+
+#login-button {
+    border: 0;
+    padding: 0;
+    outline: none;
+    background-color: transparent;
+    margin: 20px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#login-button:hover {
+    cursor: pointer;
+}
   
 @media (max-width: 600px){
     #nav-bar {
@@ -68,7 +83,40 @@ h1 {
     .header {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+    }
+
+    h1 {
+        margin-left: 30px
+    }
+
+    #nav-menu {
+        display: none;
+    }
+
+    #nav-buttons-landing {
+        padding-right: 10px;
+        background-color: rgb(149, 157, 165);
+        position: absolute;
+        right: 0px;
+    }
+
+    .nav-link {
+        height: 5vh;
+        border: 0;
+        padding: 0;
+        outline: none;
+        background-color: rgb(149, 157, 165);
+        margin-right: 5px;
+        margin-left: 10px;
+        color: white;
+        font-size: 15px;
+        font-family: 'Montserrat', sans-serif;
+
+    }
+
+    .nav-link:hover {
+        cursor: pointer;
     }
 
 }
@@ -77,10 +125,17 @@ h1 {
     #nav-bar {
         display: none;
     }
+
     .header {
+        height: 15vh;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+    }
+
+    h1 {
+        font-size: 35px;
+        margin-left: 40px
     }
 
     #user-email {
@@ -110,6 +165,39 @@ h1 {
         top: 10vh;
         right: 0;
         width: 35vw;        
+    }
+
+    #nav-menu {
+        display: none;
+    }
+
+    #nav-buttons-landing {
+        padding-right: 10px;
+        background-color: rgb(149, 157, 165);
+        position: absolute;
+        right: 0px;
+    }
+
+    .nav-link {
+        height: 8vh;
+        border: 0;
+        padding: 0;
+        outline: none;
+        background-color: rgb(149, 157, 165);
+        margin-right: 10px;
+        margin-left: 18px;
+        color: white;
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+
+    }
+
+    #menu-hamburger-icon {
+        margin-right: 40px
+    }
+
+    .nav-link:hover {
+        cursor: pointer;
     }
 }
 
@@ -144,9 +232,17 @@ h1 {
 
     #nav-buttons {
         padding-right: 30px;
-        background-color: rgb(250, 145, 40);
-        position: relative;
-        top: 26px
+        background-color: rgb(149, 157, 165);
+        position: absolute;
+        right: 0px;
+        bottom: 0px
+    }
+
+    #nav-buttons-landing {
+        padding-right: 30px;
+        background-color: rgb(149, 157, 165);
+        position: absolute;
+        right: 0px;
     }
 
     .nav-link {
@@ -154,7 +250,7 @@ h1 {
         border: 0;
         padding: 0;
         outline: none;
-        background-color: rgb(250, 145, 40);
+        background-color: rgb(149, 157, 165);
         margin-right: 18px;
         margin-left: 18px;
         color: white;
@@ -165,5 +261,9 @@ h1 {
 
     .nav-link:hover {
         cursor: pointer;
+    }
+
+    .dropdown-menu {
+        display: none;
     }
 }

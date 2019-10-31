@@ -10,7 +10,7 @@ h1 {
     background-color: rgb(50,143,255);
     display: flex;
     justify-content: space-between;
-    position: relative;
+    position: fixed;
     font-weight: bold;
 }
 
@@ -25,7 +25,7 @@ h1 {
     border: 0;
     padding: 0;
     outline: none;
-    background-color: rgb(252,150,51);
+    background-color: rgb(50,143,255);
     margin: 20px;
     color: white;
     font-size: 18px;
@@ -52,12 +52,13 @@ h1 {
 .dropdown-menu {
     height: 100vh;
     color: white;
-    background-color: rgb(250, 145, 40);
+    background-color: rgb(50,143,255);
     overflow: hidden;
     position: absolute;
-    top: 10vh;
+    top: 6vh;
     right: 0;
-    width: 50vw;        
+    width: 50vw;   
+    border: none     
 }
 
 #login-button {
@@ -74,13 +75,37 @@ h1 {
 #login-button:hover {
     cursor: pointer;
 }
+
+input {
+    height: 6vh;
+    width: 50vw;
+    margin: 4vh;
+    margin-top: 11vh;
+    padding: 2vh;
+    border: .5px solid rgb(50,143,255);
+    border-radius: 15px;
+    color: black;
+    font-size: 3vh;
+    font-family: 'Montserrat';
+}
+.button {
+    height: 6vh;
+    width: 15vw;
+    border-radius: 15px;
+    background-color: rgb(50,143,255);
+    color: white;
+    font-size: 3vh;
+    border: none;
+    font-family: 'Montserrat';
+}
   
-@media (max-width: 600px){
+@media (max-width: 750px){
     #nav-bar {
         display: none;
     }
 
     .header {
+        height: 6vh;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -96,17 +121,17 @@ h1 {
 
     #nav-buttons-landing {
         padding-right: 10px;
-        background-color: rgb(149, 157, 165);
+        background-color: rgb(50,143,255);
         position: absolute;
         right: 0px;
     }
 
     .nav-link {
         height: 5vh;
-        border: 0;
+        border: none;
         padding: 0;
         outline: none;
-        background-color: rgb(149, 157, 165);
+        background-color: rgb(50,143,255);
         margin-right: 5px;
         margin-left: 10px;
         color: white;
@@ -119,15 +144,42 @@ h1 {
         cursor: pointer;
     }
 
+    #menu-hamburger-icon {
+        margin-right: 40px;
+    }
+
+    input {
+        height: 4vh;
+        width: 50vw;
+        margin: 4vh;
+        margin-top: 10vh;
+        padding: 2vh;
+        border: .5px solid rgb(50,143,255);
+        border-radius: 15px;
+        color: black;
+        font-size: 1.8vh;
+        font-family: 'Montserrat';
+    }
+    .button {
+        height: 4vh;
+        width: 15vw;
+        border-radius: 15px;
+        background-color: rgb(50,143,255);
+        color: white;
+        font-size: 1.7vh;
+        border: none;
+        font-family: 'Montserrat';
+    }
+
 }
 
-@media (min-width: 600px) and (max-width: 1000px){
+@media (min-width: 750px) and (max-width: 1000px){
     #nav-bar {
         display: none;
     }
 
     .header {
-        height: 15vh;
+        height: 9vh;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -149,7 +201,7 @@ h1 {
         border: 0;
         padding: 0;
         outline: none;
-        background-color: rgb(250, 145, 40);
+        background-color: rgb(50,143,255);
         margin: 20px;
         color: white;
         font-size: 20px;
@@ -159,10 +211,10 @@ h1 {
     .dropdown-menu {
         height: 100vh;
         color: white;
-        background-color: rgb(250, 145, 40);
+        background-color: rgb(50,143,255);
         overflow: hidden;
         position: absolute;
-        top: 10vh;
+        top:9vh;
         right: 0;
         width: 35vw;        
     }
@@ -173,7 +225,7 @@ h1 {
 
     #nav-buttons-landing {
         padding-right: 10px;
-        background-color: rgb(149, 157, 165);
+        background-color: rgb(50,143,255);
         position: absolute;
         right: 0px;
     }
@@ -183,7 +235,7 @@ h1 {
         border: 0;
         padding: 0;
         outline: none;
-        background-color: rgb(149, 157, 165);
+        background-color: rgb(50,143,255);
         margin-right: 10px;
         margin-left: 18px;
         color: white;
@@ -207,17 +259,34 @@ h1 {
     }
 
     .header{
-        height: 18vh;
+        height: 9vh;
         display: flex;
         align-items: center;
-        position: sticky;
+        /* position: fixed; */
         /* justify-content: space-evenly; */
+    }
+
+    .logo-block {
+        display: flex;
+        justify-content: flex-start;
+        
     }
 
     h1 {
         position: relative;
         left: 30px;
-        font-size: 30px
+        font-size: 35px;
+        font-family: 'Montserrat', sans-serif;
+        
+    }
+
+    .logo {
+        font-size: 40px;
+        height: auto;
+        width: auto;
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
     }
 
     #user-email-display {
@@ -232,7 +301,7 @@ h1 {
 
     #nav-buttons {
         padding-right: 30px;
-        background-color: rgb(149, 157, 165);
+        background-color: transparent;
         position: absolute;
         right: 0px;
         bottom: 0px
@@ -240,7 +309,7 @@ h1 {
 
     #nav-buttons-landing {
         padding-right: 30px;
-        background-color: rgb(149, 157, 165);
+        background-color: rgb(50,143,255);
         position: absolute;
         right: 0px;
     }
@@ -250,7 +319,7 @@ h1 {
         border: 0;
         padding: 0;
         outline: none;
-        background-color: rgb(149, 157, 165);
+        background-color: transparent;
         margin-right: 18px;
         margin-left: 18px;
         color: white;

@@ -16,25 +16,25 @@ function Header(props){
     // console.log(props)
     
     // this method checks the session. If a user has logged in in the past eight hours it will fetch their data and pass it on to the redux store so that it can be used here in the component. 
-    useEffect(() => {
-        // console.log('hit useEffect', props)
-        if(!props.user.email){
-            // console.log('hit')
-            axios.get('/api/auth/user')
-            .then(res => {
-                console.log(res.data.email)
-                if(res.data.email){
-                    props.updateUser(res.data)
-                }
-                else {
-                    props.history.push('/')
-                }
-                // console.log(props.user)            
-            })
-            .catch(err => console.log(err))
-            }
+    // useEffect(() => {
+    //     // console.log('hit useEffect', props)
+    //     if(!props.user.email){
+    //         // console.log('hit')
+    //         axios.get('/api/auth/user')
+    //         .then(res => {
+    //             console.log(res.data.email)
+    //             if(res.data.email){
+    //                 props.updateUser(res.data)
+    //             }
+    //             else {
+    //                 props.history.push('/')
+    //             }
+    //             // console.log(props.user)            
+    //         })
+    //         .catch(err => console.log(err))
+    //         }
         
-    }, [])
+    // }, [])
 
     const toggleMenu = () => {
         setShowMenu(!showMenu)
@@ -46,13 +46,14 @@ function Header(props){
 
 
     const handleLoginUser = () => {
-        axios.post('/api/auth/login', {email: userEmail, password: userPassword})
-        .then(res => {
-            // console.log(res.data)
-            props.updateUser(res.data)
-            props.history.push('/home')
-        })
-        .catch(err => console.log(err))
+        // axios.post('/api/auth/login', {email: userEmail, password: userPassword})
+        // .then(res => {
+        //     // console.log(res.data)
+        //     props.updateUser(res.data)
+        //     props.history.push('/home')
+        // })
+        // .catch(err => console.log(err))
+        props.history.push('/home')
     }
 
     const handleSignOut = () => {
@@ -71,7 +72,7 @@ function Header(props){
         return(
             <main  className='header'>                
                 <header>
-                    <h1>NewsCatch</h1>
+                    <h1>newsCatch</h1>
                 </header>
                 <div id='menu-hamburger-icon'>
                     <i id='hamburger-icon' className='fas fa-bars fa-2x' onClick={toggleMenu} />
@@ -81,7 +82,6 @@ function Header(props){
                     <nav className='dropdown-menu'>
 
                         <section id='nav-buttons-dropdown'>
-                            <p id='user-email'>{props.user.email}</p>
                                 <Link to='/home'><button className='link' onClick={() => toggleMenu()}>Home</button></Link>
                                 <Link to='/savedarticles'><button className='link' onClick={() => toggleMenu()}>Saved Articles</button></Link>
                                 <Link to='/myaccount'><button className='link' onClick={() => toggleMenu()}>My Account</button></Link>
@@ -99,7 +99,7 @@ function Header(props){
                             <button className='nav-link' onClick={() => handleSignOut()}>Sign Out</button>
                         </section>
                         <section id='user-email-display'>
-                            <p id='user-email'>{props.user.email}</p>
+                            {/* <p id='user-email'>{props.user.email}</p> */}
                         </section>
                 </nav>
 
@@ -110,7 +110,8 @@ function Header(props){
 } else if(props.location.pathname === '/'){
     return(
         <main className='header'>
-                <h1>NewsCatch</h1>
+                <h1>newsCatch</h1>
+                
                 {!login ? (
                     <nav id='nav-buttons-landing'>
                         <button className='nav-link' onClick={() => toggleLogin()}>Login</button>
@@ -132,7 +133,7 @@ function Header(props){
 } else {
     return(
         <div className='header'>
-            <h1>NewsCatch</h1>
+            <h1>newsCatch</h1>
         </div>
     )
 }

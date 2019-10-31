@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async (req, res) => {
-        console.log('hit regiser function')
+        console.log('hit register function')
         const {firstName, lastName, email, password} = req.body
         const db = req.app.get('db');
 
@@ -45,14 +45,14 @@ module.exports = {
     },
 
     logout: (req, res) => {
-        console.log('hit logout', req.session)
+        // console.log('hit logout', req.session)
         req.session.destroy();
-        console.log(req.session)
+        // console.log(req.session)
         res.sendStatus(200)
     },
 
     checkUser: (req, res) => {
-        console.log('hit checkUser', req.session)
+        // console.log('hit checkUser', req.session)
         if(req.session.user){
             res.status(200).send(req.session.user)
         } 

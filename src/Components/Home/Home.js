@@ -24,13 +24,14 @@ function Home(props){
     return(
         <main>
             <article>
-            <section>
+            <section id='input'>
                 <input 
+                
                 placeholder='Enter keyword here'
                 name='search'
                 onChange={e => setSearch(e.target.value)} />
 
-                <button onClick={() => handleSearch()}>Search</button>
+                <button onClick={() => handleSearch()} className='button' >Search</button>
             </section>
 
             {feed.map((e, i) => {

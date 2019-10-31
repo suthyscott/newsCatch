@@ -7,6 +7,7 @@
 
  const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
  const authCtrl = require('./authController')
+ const ctrl = require('./Controller')
 
  app.use(express.json())
 
@@ -30,7 +31,7 @@ app.post('/api/auth/login', authCtrl.login)
 app.post('/api/auth/logout', authCtrl.logout)
 app.get('/api/auth/user', authCtrl.checkUser)
 
-
+app.post('/api/article', ctrl.saveArticle)
 
  const port = SERVER_PORT
 

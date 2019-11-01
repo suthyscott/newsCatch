@@ -15,6 +15,8 @@ function Home(props){
         .catch(err => console.log(err))
     }, [])
 
+    console.log(feed)
+
     const handleSearch = () => {
         axios.get(`https://newsapi.org/v2/everything?q=${search}&apiKey=${config.apiKey}`)
         .then(res => setFeed(res.data.articles))
@@ -26,7 +28,7 @@ function Home(props){
             <article>
             <section id='input'>
                 <input 
-                
+                className='search-input'
                 placeholder='Enter keyword here'
                 name='search'
                 onChange={e => setSearch(e.target.value)} />
@@ -35,7 +37,7 @@ function Home(props){
             </section>
 
             {feed.map((e, i) => {
-                return <ArticleDisplay article={e} key={i}/>
+                return <ArticleDisplay article={e} key={'home-article', i}/>
             })}
             </article>
         </main>

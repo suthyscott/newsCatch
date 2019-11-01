@@ -1,4 +1,4 @@
-input {
+.search-input {
     /* height: 10px;
     width: 10vw; */
     padding: 10px;
@@ -6,3 +6,16 @@ input {
     top: 20vh;
 
 }
+
+/* input {
+    height: 6vh;
+    width: 50vw;
+    margin: 4vh;
+    margin-top: 11vh;
+    padding: 2vh;
+    border: .5px solid rgb(50,143,255);
+    border-radius: 15px;
+    color: black;
+    font-size: 3vh;
+    font-family: 'Montserrat';
+} */

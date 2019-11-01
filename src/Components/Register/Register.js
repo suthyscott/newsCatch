@@ -28,16 +28,18 @@ function Register(props){
   }
 
     return(
-        <div>
-            Register
-            <input placeholder='First Name' onChange={e => setFirstName(e.target.value)}/>
-            <input placeholder='Last Name' onChange={e => setLastName(e.target.value)} />
-            <input placeholder='Email address' onChange={e => setEmail(e.target.value)} />
-            <input placeholder='Password' onChange={e => setPassword(e.target.value)}/>
-            <input placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
+        <body>
+            <div className='register-form'>
+                Register
+                <input className='register-input' placeholder='First Name' onChange={e => setFirstName(e.target.value)}/>
+                <input className='register-input' placeholder='Last Name' onChange={e => setLastName(e.target.value)} />
+                <input className='register-input' placeholder='Email address' onChange={e => setEmail(e.target.value)} />
+                <input placeholder='Password' onChange={e => setPassword(e.target.value)}/>
+                <input className='register-input' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
 
-            <button onClick={() => handleRegister()}>Register Account</button>
-        </div>
+                <button onClick={() => handleRegister()}>Register Account</button>
+            </div>
+        </body>
     )
 }
 

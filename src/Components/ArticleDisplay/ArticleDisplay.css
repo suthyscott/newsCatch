@@ -43,6 +43,10 @@
     font-size: 3vh;
 }
 
+.article-nav-buttons:hover {
+    cursor: pointer;
+}
+
 .analysis {
     display: flex;
     justify-content: space-evenly;

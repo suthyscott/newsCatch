@@ -12,72 +12,68 @@ function Header(props){
     const [login, setLogin] = useState(false)
     const [userEmail, setUserEmail] = useState('')
     const [userPassword, setUserPassword] = useState('')
-
-    // console.log(props)
     
-    // this method checks the session. If a user has logged in in the past eight hours it will fetch their data and pass it on to the redux store so that it can be used here in the component. 
-    // useEffect(() => {
-    //     // console.log('hit useEffect', props)
-    //     if(!props.user.email){
-    //         // console.log('hit')
-    //         axios.get('/api/auth/user')
-    //         .then(res => {
-    //             console.log(res.data.email)
-    //             if(res.data.email){
-    //                 props.updateUser(res.data)
-    //             }
-    //             else {
-    //                 props.history.push('/')
-    //             }
-    //             // console.log(props.user)            
-    //         })
-    //         .catch(err => console.log(err))
-    //         }
+    // This method checks the session. If a user has logged in in the past eight hours it will fetch their data and pass it on to the redux store so that it can be used here in the component. 
+    useEffect(() => {
+        if(!props.user.email){
+            axios.get('/api/auth/user')
+            .then(res => {
+                console.log(res.data.email)
+                if(res.data.email){
+                    props.updateUser(res.data)
+                }
+                else {
+                    props.history.push('/')
+                }          
+            })
+            .catch(err => console.log(err))
+            }
         
-    // }, [])
+    }, [])
 
+    // Used to toggle the dropdown menu for mobile responsiveness.
     const toggleMenu = () => {
         setShowMenu(!showMenu)
     }
 
+    // Used to show the login inputs when the user clicks 'Login' on the landing page. 
     const toggleLogin = () => {
         setLogin(!login)
     }
 
-
+    // Self-explanatory.
     const handleLoginUser = () => {
-        // axios.post('/api/auth/login', {email: userEmail, password: userPassword})
-        // .then(res => {
-        //     // console.log(res.data)
-        //     props.updateUser(res.data)
-        //     props.history.push('/home')
-        // })
-        // .catch(err => console.log(err))
+        axios.post('/api/auth/login', {email: userEmail, password: userPassword})
+        .then(res => {
+            props.updateUser(res.data)
+            props.history.push('/home')
+        })
+        .catch(err => console.log(err))
         props.history.push('/home')
     }
 
+    // Self-explanatory.
     const handleSignOut = () => {
         axios.post('/api/auth/logout')
         .then(res => {
-            console.log(res)
             setLogin(false)
             props.updateUser({})
             props.history.push('/')
         })
         .catch(err => console.log(err))
     }
-    // console.log(blockAccess)
 
+    // First display toggle. If the user is anywhere but on the landing or register pages this return value will be displayed. 
     if(props.location.pathname !== '/' && props.location.pathname !=='/register' ){
         return(
             <main  className='header'>                
                 <header>
-                    <h1>newsCatch</h1>
+                    <h1 className='logo'>newsCatch</h1>
                 </header>
                 <div id='menu-hamburger-icon'>
                     <i id='hamburger-icon' className='fas fa-bars fa-2x' onClick={toggleMenu} />
                 </div>
-
+                {/* The toggle to show or hide the mobile dropdown menu. */}
                 {showMenu ? (
                     <nav className='dropdown-menu'>
 
@@ -98,31 +94,31 @@ function Header(props){
                             <Link to='/myaccount'><button className='nav-link'>My Account</button></Link>
                             <button className='nav-link' onClick={() => handleSignOut()}>Sign Out</button>
                         </section>
-                        <section id='user-email-display'>
-                            {/* <p id='user-email'>{props.user.email}</p> */}
-                        </section>
                 </nav>
 
 
             </main>
            
     )
+    // Second display toggle. Displays if user is on landing page. 
 } else if(props.location.pathname === '/'){
     return(
         <main className='header'>
-                <h1>newsCatch</h1>
-                
+                <h1 className='logo'>newsCatch</h1>
+                {/* Expands the login inputs. */}
                 {!login ? (
                     <nav id='nav-buttons-landing'>
                         <button className='nav-link' onClick={() => toggleLogin()}>Login</button>
                         <Link to='/register' ><button className='nav-link'>Register</button></Link>
                     </nav>
                 ) : (
-                    <div>
+                    <div className='login-field'>
                         <input 
+                        className='login-input'
                         placeholder='email'
                         onChange={e => setUserEmail(e.target.value)} />
                         <input
+                        className='login-input'
                         placeholder='password'
                         onChange={e => setUserPassword(e.target.value)} />
                         <button id='login-button' onClick={() => handleLoginUser()}>Login</button>
@@ -130,15 +126,17 @@ function Header(props){
                 )}
         </main>
     )
+    // Third display toggle. Shows when user is on register page. 
 } else {
     return(
         <div className='header'>
-            <h1>newsCatch</h1>
+            <h1 className='logo'>newsCatch</h1>
         </div>
     )
 }
 }
 
+// Receiving state from authReducer.
 const mapStateToProps = reduxState => {
     const {user} = reduxState.authReducer;
     return {
@@ -146,8 +144,10 @@ const mapStateToProps = reduxState => {
     }
 }
 
+// Still not quite sure exactly what this does. 
 const mapDispatchToProps = {
     updateUser
 }
 
+// Connects component to redux store. 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))

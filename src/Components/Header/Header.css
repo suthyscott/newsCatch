@@ -1,32 +1,32 @@
-h1 {
+.logo {
     font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .header {
-    height: 10vh;
+    height: 9vh;
     width: 100vw;
     background-color: rgb(50,143,255);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: fixed;
-    font-weight: bold;
 }
 
 #nav-buttons-dropdown {
     display: flex;
     flex-direction: column;  
-    height: 100vh; 
-    /* width: 50vw; */
+    height: 100vh;
 }
 
 .link {
     border: 0;
     padding: 0;
     outline: none;
-    background-color: rgb(50,143,255);
-    margin: 20px;
+    background-color: transparent;
+    margin: 40px;
     color: white;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
@@ -37,28 +37,24 @@ h1 {
 }
 
 #menu-hamburger-icon {
-    margin: 15px 20px;
+    margin-right: 40px;
     color: white
 }
 
-#user-email {
-    color: white;
-    font-size: 17px;
-    font-family: 'Montserrat', sans-serif;
-    margin: 20px
+#menu-hamburger-icon:hover {
+    cursor: pointer;
 }
 
-
 .dropdown-menu {
-    height: 100vh;
-    color: white;
     background-color: rgb(50,143,255);
     overflow: hidden;
     position: absolute;
     top: 6vh;
-    right: 0;
-    width: 50vw;   
-    border: none     
+    right: 0; 
+    border: none;
+    display: flex;
+    flex-direction: column;  
+    height: 100vh;     
 }
 
 #login-button {
@@ -76,145 +72,84 @@ h1 {
     cursor: pointer;
 }
 
-input {
-    height: 6vh;
-    width: 50vw;
-    margin: 4vh;
-    margin-top: 11vh;
+.login-field {
+    display: flex;
+    align-items: center;
+}
+
+.login-input {
+    height: 5vh;
+    width: 15vw;
+    position: relative;
+    margin: 1vw;
+    font-size: 2.8vh;
     padding: 2vh;
     border: .5px solid rgb(50,143,255);
     border-radius: 15px;
     color: black;
-    font-size: 3vh;
     font-family: 'Montserrat';
 }
-.button {
-    height: 6vh;
-    width: 15vw;
-    border-radius: 15px;
-    background-color: rgb(50,143,255);
-    color: white;
-    font-size: 3vh;
-    border: none;
-    font-family: 'Montserrat';
-}
-  
-@media (max-width: 750px){
-    #nav-bar {
-        display: none;
-    }
 
+#nav-buttons-landing {
+    padding-right: 10px;
+    background-color: transparent;
+    position: absolute;
+    right: 0px;
+}
+
+.nav-link {
+    height: 5vh;
+    border: none;
+    padding: 0;
+    outline: none;
+    background-color: transparent;
+    margin-right: 5px;
+    margin-left: 10px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.nav-link:hover {
+    cursor: pointer;
+}
+
+  
+@media (max-width: 600px){
     .header {
         height: 6vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
-    h1 {
-        margin-left: 30px
+    .logo {
+        margin-left: 30px;
     }
 
     #nav-menu {
         display: none;
-    }
+    }    
 
-    #nav-buttons-landing {
-        padding-right: 10px;
-        background-color: rgb(50,143,255);
-        position: absolute;
-        right: 0px;
-    }
-
-    .nav-link {
-        height: 5vh;
-        border: none;
-        padding: 0;
-        outline: none;
-        background-color: rgb(50,143,255);
-        margin-right: 5px;
-        margin-left: 10px;
-        color: white;
-        font-size: 15px;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-
-    .nav-link:hover {
-        cursor: pointer;
-    }
-
-    #menu-hamburger-icon {
-        margin-right: 40px;
-    }
-
-    input {
-        height: 4vh;
-        width: 50vw;
-        margin: 4vh;
-        margin-top: 10vh;
-        padding: 2vh;
-        border: .5px solid rgb(50,143,255);
-        border-radius: 15px;
-        color: black;
-        font-size: 1.8vh;
-        font-family: 'Montserrat';
-    }
-    .button {
-        height: 4vh;
-        width: 15vw;
-        border-radius: 15px;
-        background-color: rgb(50,143,255);
-        color: white;
+    .login-input {
+        height: 3vh;
         font-size: 1.7vh;
-        border: none;
-        font-family: 'Montserrat';
+        padding: .7vh;
     }
+
 
 }
 
-@media (min-width: 750px) and (max-width: 1000px){
-    #nav-bar {
-        display: none;
-    }
-
-    .header {
-        height: 9vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    h1 {
+@media (min-width: 600px) and (max-width: 1000px){
+    .logo {
         font-size: 35px;
         margin-left: 40px
     }
-
-    #user-email {
-        color: white;
-        font-size: 18px;
-        font-family: 'Montserrat', sans-serif;
-        margin: 20px
-    }
-
     .link {
-        border: 0;
-        padding: 0;
-        outline: none;
-        background-color: rgb(50,143,255);
-        margin: 20px;
-        color: white;
         font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
     }
 
     .dropdown-menu {
-        height: 100vh;
-        color: white;
-        background-color: rgb(50,143,255);
-        overflow: hidden;
         position: absolute;
-        top:9vh;
+        top: 9vh;
         right: 0;
         width: 35vw;        
     }
@@ -223,33 +158,9 @@ input {
         display: none;
     }
 
-    #nav-buttons-landing {
-        padding-right: 10px;
-        background-color: rgb(50,143,255);
-        position: absolute;
-        right: 0px;
-    }
-
     .nav-link {
         height: 8vh;
-        border: 0;
-        padding: 0;
-        outline: none;
-        background-color: rgb(50,143,255);
-        margin-right: 10px;
-        margin-left: 18px;
-        color: white;
         font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-
-    #menu-hamburger-icon {
-        margin-right: 40px
-    }
-
-    .nav-link:hover {
-        cursor: pointer;
     }
 }
 
@@ -258,46 +169,16 @@ input {
         display: none;
     }
 
-    .header{
-        height: 9vh;
-        display: flex;
-        align-items: center;
-        /* position: fixed; */
-        /* justify-content: space-evenly; */
-    }
-
-    .logo-block {
-        display: flex;
-        justify-content: flex-start;
-        
-    }
-
-    h1 {
-        position: relative;
-        left: 30px;
-        font-size: 35px;
-        font-family: 'Montserrat', sans-serif;
-        
+    .header {
+        height: 10vh;
     }
 
     .logo {
-        font-size: 40px;
-        height: auto;
-        width: auto;
-        font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-        color: white;
+        position: relative;
+        left: 30px;
+        font-size: 40px;        
     }
 
-    #user-email-display {
-        position: fixed;
-        top: -10px;
-        right: 10px
-    }
-
-    #user-email {
-        font-size: 14px;
-    }
 
     #nav-buttons {
         padding-right: 30px;
@@ -309,27 +190,11 @@ input {
 
     #nav-buttons-landing {
         padding-right: 30px;
-        background-color: rgb(50,143,255);
-        position: absolute;
-        right: 0px;
     }
 
     .nav-link {
         height: 9vh;
-        border: 0;
-        padding: 0;
-        outline: none;
-        background-color: transparent;
-        margin-right: 18px;
-        margin-left: 18px;
-        color: white;
         font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-
-    .nav-link:hover {
-        cursor: pointer;
     }
 
     .dropdown-menu {

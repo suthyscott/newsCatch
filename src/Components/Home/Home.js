@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ArticleDisplay from '../ArticleDisplay/ArticleDisplay';
+import './Home.css'
 
 const config = require('../../Config');
 
@@ -15,7 +16,7 @@ function Home(props){
         .catch(err => console.log(err))
     }, [])
 
-    console.log(feed)
+    // console.log(feed)
 
     const handleSearch = () => {
         axios.get(`https://newsapi.org/v2/everything?q=${search}&apiKey=${config.apiKey}`)
@@ -25,15 +26,15 @@ function Home(props){
 
     return(
         <main>
-            <article>
-            <section id='input'>
+            <article >
+            <section className='search-box'>
                 <input 
                 className='search-input'
                 placeholder='Enter keyword here'
                 name='search'
                 onChange={e => setSearch(e.target.value)} />
 
-                <button onClick={() => handleSearch()} className='button' >Search</button>
+                <button onClick={() => handleSearch()} className='search-button' >Search</button>
             </section>
 
             {feed.map((e, i) => {

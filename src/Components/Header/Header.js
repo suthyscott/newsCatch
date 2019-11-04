@@ -18,7 +18,7 @@ function Header(props){
         if(!props.user.email){
             axios.get('/api/auth/user')
             .then(res => {
-                console.log(res.data.email)
+                // console.log(res.data.email)
                 if(res.data.email){
                     props.updateUser(res.data)
                 }

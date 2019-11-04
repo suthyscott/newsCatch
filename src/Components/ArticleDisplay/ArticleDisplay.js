@@ -1,6 +1,6 @@
 // This is the component that receives each article in turn from the Home component and displaying the image, headline, and analysis results. 
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './ArticleDisplay.css';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
@@ -8,6 +8,15 @@ import {withRouter} from 'react-router-dom';
 function ArticleDisplay(props){
     const {article} = props
     const {title, source, author, description, url, urlToImage, content, publishedAt} = article
+
+    const [keyPhrases, setKeyPhrases] = useState({keyPhrases: [{BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'}]})
+    const [entities, setEntities] = useState({Entities: [{BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}]})
+    const [sentiment, setSentiment] = useState({SentimentScore: {Positive: 1, Negative: 2, Neutral: 3, Mixed: 4}, Sentiment: 'Positive'})
+
+    console.log(sentiment)
+    console.log(entities)
+    console.log(keyPhrases)
+   
 
     const config = require('../../Config')
     
@@ -29,30 +38,45 @@ function ArticleDisplay(props){
         LanguageCode: 'en',
         Text: content
     }        
-    comprehend.detectEntities(detectEntitiesParams, function(err, data) {
+    useEffect(() => {
+        comprehend.detectEntities(detectEntitiesParams, function(err, data) {
         if(err) console.log(err, err.stack);
-        else article.entities = data
-    })
+        else setEntities(data)
+        })
+    
+    
 
         // This function sends the article's content to Amazon comprehend and attaches the sentiment to the article object.
     var detectSentimentParams = {
         LanguageCode: 'en',
         Text: content
     }
-    comprehend.detectSentiment(detectSentimentParams, function(err, data) {
+
+  
+        comprehend.detectSentiment(detectSentimentParams, function(err, data) {
         if(err) console.log(err, err.stack); 
-        else article.sentiment = data
-    })
+        else setSentiment(data)
+        })
+  
+    
 
         // This function sends the article's content to Amazon comprehend and attaches the key phrases to the article object.
     var detectKeyPhrasesParams = {
         LanguageCode: 'en',
         Text: content
     }
-    comprehend.detectKeyPhrases(detectKeyPhrasesParams, function(err, data) {
-        if(err) console.log(err, err.stack); 
-        else article.keyPhrases = data
-    })
+
+  
+   
+         comprehend.detectKeyPhrases(detectKeyPhrasesParams, function(err, data) {
+            if(err) console.log(err, err.stack); 
+            else setKeyPhrases(data)
+        })
+
+
+     }, [])
+        
+
 
     // this function fires a post request that sends the selected article to the database. 
     const {name} = source
@@ -64,6 +88,7 @@ function ArticleDisplay(props){
     var articlePic = urlToImage
     var savedArticlePic = article.url_to_image
 
+
     return(
         <main className='article-display'>
             <div className='article' >
@@ -74,8 +99,8 @@ function ArticleDisplay(props){
 
                 <section className='analysis'>
                     <p>Entities</p>
-                    <p>Key Phrases</p>
-                    <p>Sentiment</p>
+                    
+                    {sentiment.Sentiment}
                 </section>
                 <nav className='article-nav'>
                     <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>

@@ -1,18 +1,42 @@
-.register-form {
-    position: absolute;
-    top: 40vh;
-    height: auto;
+#register-form {
+    position: relative;
+    top: 12vh;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#register-greeting {
+    font-family: 'Montserrat';
+    color: rgb(50,143,255)
 }
 
 .register-input {
-    height: 5vh;
-    width: 15vw;
+    height: 3vh;
+    width: 70vw;
     position: relative;
     margin: 1vw;
-    font-size: 2.8vh;
+    font-size: 2vh;
     padding: 2vh;
     border: .5px solid rgb(50,143,255);
     border-radius: 15px;
     color: black;
     font-family: 'Montserrat';
+}
+
+#register-button {
+    height: 5vh;
+    width: 30vw;
+    border: none;
+    background: rgb(50,143,255);
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 2.5vh;
+    border-radius: 15px;
+}
+
+#register-button:hover {
+    cursor: pointer;
 }

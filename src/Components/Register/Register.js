@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {updateUser} from '../../ducks/authReducer';
+import './Register.css';
 
 
 function Register(props){
@@ -29,15 +30,18 @@ function Register(props){
 
     return(
         <body>
-            <div className='register-form'>
-                Register
+            <div id='register-form'>
+                <p id='register-greeting'>Welcome to newsCatch!</p>
                 <input className='register-input' placeholder='First Name' onChange={e => setFirstName(e.target.value)}/>
                 <input className='register-input' placeholder='Last Name' onChange={e => setLastName(e.target.value)} />
                 <input className='register-input' placeholder='Email address' onChange={e => setEmail(e.target.value)} />
-                <input placeholder='Password' onChange={e => setPassword(e.target.value)}/>
-                <input className='register-input' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
+                <input
+                type='password' 
+                className='register-input' placeholder='Password' onChange={e => setPassword(e.target.value)}/>
+                <input
+                type='password' className='register-input' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
 
-                <button onClick={() => handleRegister()}>Register Account</button>
+                <button id='register-button' onClick={() => handleRegister()}>Register</button>
             </div>
         </body>
     )

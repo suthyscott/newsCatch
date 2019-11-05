@@ -6,6 +6,9 @@ import axios from 'axios';
 import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {passArticle} from '../../ducks/articleReducer';
+import SentimentPieChart from '../SentimentPieChart/SentimentPieChart';
+import EntitiesDisplay from '../EntitiesDisplay/EntitiesDisplay';
+import KeyPhrasesDisplay from '../KeyPhrasesDisplay/KeyPhrasesDisplay';
 
 function ArticleDisplay(props){
     const {article} = props
@@ -16,6 +19,9 @@ function ArticleDisplay(props){
     const [entities, setEntities] = useState({Entities: [
         {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'},  {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}]})
     const [sentiment, setSentiment] = useState({SentimentScore: {Positive: 1, Negative: 2, Neutral: 3, Mixed: 4}, Sentiment: 'Positive'})
+    const [displaySentiment, setDisplaySentiment] = useState(false)
+    const [displayEntities, setDisplayEntities] = useState(false)
+    const [displayKeyPhrases, setDisplayKeyPhrases] = useState(false)
 
 
     const config = require('../../Config')
@@ -100,42 +106,40 @@ function ArticleDisplay(props){
                 {articlePic ? (
                     <img className='img' src={articlePic}/>
                 ) : (<img className='img' src={savedArticlePic}/>)}
-                <h1 className='headlines'>{title}</h1>             
 
-                <section className='analysis'>
-                    {/* {entities.Entities[0].Text}
-                    {entities.Entities[1].Text}
-                    {entities.Entities[2].Text}
-                    <br/>
-                    
-                    {keyPhrases.KeyPhrases[0].Text} 
-                    {keyPhrases.KeyPhrases[1].Text}
-                    {keyPhrases.KeyPhrases[2].Text}
-                    {keyPhrases.KeyPhrases[3].Text}
-                    {keyPhrases.KeyPhrases[4].Text}
-                    <br/>
-                    {sentiment.Sentiment} */}
-                </section>
-                <nav className='article-nav'>
+                <section className='text-and-buttons'>
+                    <h1 className='headlines'>{title}</h1>             
+
+                    <section className='article-nav-button-bar'>
                     <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
-                    <Link to={`/singlearticle/${title}`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
-                </nav>
-            </div>
+                    <Link to={`/singlearticle/`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
+                    </section>
 
-           
-            
+                    <section className='analysis-button-bar'>
+                        <button className='analysis-buttons' onClick={() => setDisplaySentiment(!displaySentiment)}>Sentiment</button>
+                        <button className='analysis-buttons' onClick={() => setDisplayEntities(!displayEntities)}>Entities</button>
+                        <button className='analysis-buttons' onClick={() => setDisplayKeyPhrases(!displayKeyPhrases)}>Key Phrases</button>
+                    </section>
+
+                        
+                    <section className='analysis'>
+                        {displaySentiment ? (<SentimentPieChart sentiment={sentiment.SentimentScore}/>) : null}
+
+                        {displayEntities ? (entities.Entities.map((e,i) =>{
+                            return <EntitiesDisplay entity={e} key={`Entity key ${i}`}/>
+                        })) : null}
+                    
+                        {displayKeyPhrases ? (keyPhrases.KeyPhrases.map((e,i) => {
+                            return <KeyPhrasesDisplay keyPhrase={e} key={`keyPhrase key${i}`}/>
+                        }) ) : null}
+                    </section>
+                </section>
+            </div>
+               
 
         </main>
     )
 }
-
-// Receiving state from authReducer.
-// const mapStateToProps = reduxState => {
-//     const {user} = reduxState.authReducer;
-//     return {
-//         user
-//     }
-// }
 
 // Still not quite sure exactly what this does. 
 const mapDispatchToProps = {

@@ -13,12 +13,14 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    z-index: 5;
 }
 
 #nav-buttons-dropdown {
     display: flex;
     flex-direction: column;  
     height: 100vh;
+    z-index: 5;
 }
 
 .link {

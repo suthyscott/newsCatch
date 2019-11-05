@@ -13,7 +13,7 @@ export default (
         <Route path='/register' component={Register} />
         <Route path='/home' component={Home} />
         <Route path='/savedarticles' component={SavedArticles} />
-        <Route path='/singlearticel/:id' component={SingleArticle} />
+        <Route path='/singlearticle/:id' component={SingleArticle} />
         <Route path='/myaccount' component={MyAccount} />
     </Switch>
 )

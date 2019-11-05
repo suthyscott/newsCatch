@@ -3,20 +3,20 @@
 import React, {useEffect, useState} from 'react';
 import './ArticleDisplay.css';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {passArticle} from '../../ducks/articleReducer';
 
 function ArticleDisplay(props){
     const {article} = props
     const {title, source, author, description, url, urlToImage, content, publishedAt} = article
 
-    const [keyPhrases, setKeyPhrases] = useState({keyPhrases: [{BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'}]})
-    const [entities, setEntities] = useState({Entities: [{BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}]})
+    const [keyPhrases, setKeyPhrases] = useState({KeyPhrases: [
+        {BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'},{BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'},{BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'},{BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'},{BeginOffset: 1, EndOffset: 2, Score: 3, Text: 'A Louisiana pastor'}]})
+    const [entities, setEntities] = useState({Entities: [
+        {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'},  {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}]})
     const [sentiment, setSentiment] = useState({SentimentScore: {Positive: 1, Negative: 2, Neutral: 3, Mixed: 4}, Sentiment: 'Positive'})
 
-    console.log(sentiment)
-    console.log(entities)
-    console.log(keyPhrases)
-   
 
     const config = require('../../Config')
     
@@ -88,6 +88,11 @@ function ArticleDisplay(props){
     var articlePic = urlToImage
     var savedArticlePic = article.url_to_image
 
+    const viewArticle = () => {
+        console.log('hit viewArticle', article, sentiment, entities, keyPhrases)
+        props.passArticle(article, sentiment, entities, keyPhrases)
+    }
+
 
     return(
         <main className='article-display'>
@@ -98,15 +103,23 @@ function ArticleDisplay(props){
                 <h1 className='headlines'>{title}</h1>             
 
                 <section className='analysis'>
-                    <p>Entities</p>
+                    {/* {entities.Entities[0].Text}
+                    {entities.Entities[1].Text}
+                    {entities.Entities[2].Text}
+                    <br/>
                     
-                    {sentiment.Sentiment}
+                    {keyPhrases.KeyPhrases[0].Text} 
+                    {keyPhrases.KeyPhrases[1].Text}
+                    {keyPhrases.KeyPhrases[2].Text}
+                    {keyPhrases.KeyPhrases[3].Text}
+                    {keyPhrases.KeyPhrases[4].Text}
+                    <br/>
+                    {sentiment.Sentiment} */}
                 </section>
                 <nav className='article-nav'>
                     <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
-                    <button className='article-nav-buttons'>View Article</button>
+                    <Link to={`/singlearticle/${title}`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
                 </nav>
-                <div className='break-line'></div>
             </div>
 
            
@@ -116,4 +129,18 @@ function ArticleDisplay(props){
     )
 }
 
-export default withRouter(ArticleDisplay)
+// Receiving state from authReducer.
+// const mapStateToProps = reduxState => {
+//     const {user} = reduxState.authReducer;
+//     return {
+//         user
+//     }
+// }
+
+// Still not quite sure exactly what this does. 
+const mapDispatchToProps = {
+    passArticle
+}
+
+// Connects component to redux store. 
+export default connect(null, mapDispatchToProps)(withRouter(ArticleDisplay))

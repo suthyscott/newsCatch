@@ -19,9 +19,6 @@ function ArticleDisplay(props){
     const [entities, setEntities] = useState({Entities: [
         {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'},  {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}]})
     const [sentiment, setSentiment] = useState({SentimentScore: {Positive: 1, Negative: 2, Neutral: 3, Mixed: 4}, Sentiment: 'Positive'})
-    const [displaySentiment, setDisplaySentiment] = useState(false)
-    const [displayEntities, setDisplayEntities] = useState(false)
-    const [displayKeyPhrases, setDisplayKeyPhrases] = useState(false)
 
 
     const config = require('../../Config')
@@ -95,7 +92,7 @@ function ArticleDisplay(props){
     var savedArticlePic = article.url_to_image
 
     const viewArticle = () => {
-        console.log('hit viewArticle', article, sentiment, entities, keyPhrases)
+        // console.log('hit viewArticle', article, sentiment, entities, keyPhrases)
         props.passArticle(article, sentiment, entities, keyPhrases)
     }
 
@@ -112,27 +109,9 @@ function ArticleDisplay(props){
 
                     <section className='article-nav-button-bar'>
                     <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
-                    <Link to={`/singlearticle/`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
+                    <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
                     </section>
-
-                    <section className='analysis-button-bar'>
-                        <button className='analysis-buttons' onClick={() => setDisplaySentiment(!displaySentiment)}>Sentiment</button>
-                        <button className='analysis-buttons' onClick={() => setDisplayEntities(!displayEntities)}>Entities</button>
-                        <button className='analysis-buttons' onClick={() => setDisplayKeyPhrases(!displayKeyPhrases)}>Key Phrases</button>
-                    </section>
-
                         
-                    <section className='analysis'>
-                        {displaySentiment ? (<SentimentPieChart sentiment={sentiment.SentimentScore}/>) : null}
-
-                        {displayEntities ? (entities.Entities.map((e,i) =>{
-                            return <EntitiesDisplay entity={e} key={`Entity key ${i}`}/>
-                        })) : null}
-                    
-                        {displayKeyPhrases ? (keyPhrases.KeyPhrases.map((e,i) => {
-                            return <KeyPhrasesDisplay keyPhrase={e} key={`keyPhrase key${i}`}/>
-                        }) ) : null}
-                    </section>
                 </section>
             </div>
                

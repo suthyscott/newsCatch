@@ -8,7 +8,7 @@ const initialState = {
 const PASS_ARTICLE = 'PASS_ARTICLE'
 
 export function passArticle(articleObj, sentimentObj, entitiesObj, keyPhrasesObj){
-    console.log(articleObj, sentimentObj, entitiesObj, keyPhrasesObj)
+    // console.log(articleObj, sentimentObj, entitiesObj, keyPhrasesObj)
     return{
         type: PASS_ARTICLE,
         payload: {

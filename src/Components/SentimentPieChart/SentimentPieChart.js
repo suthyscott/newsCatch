@@ -25,7 +25,7 @@ function SentimentPieChart(props){
 
     return(
         <div >
-            <h1>Sentiment Pie Chart</h1>
+            <h1 className='sentiment-header'>Sentiment Pie Chart</h1>
             <Pie className='sentiment-pie-chart'
             data={{
                 labels: labels,
@@ -34,7 +34,11 @@ function SentimentPieChart(props){
             options={{
                 responsive: true,
                 maintainAspectRatio: true,
-                text: 'Percentage'
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                    }
+                }
             }} 
             />
 

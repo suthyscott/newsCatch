@@ -1,4 +1,4 @@
-.key-phrases-display {
+.entities-display {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -8,7 +8,6 @@
     padding: 10px;
 }
 
-.sentiment-header {
-    font-family: 'Montserrat';
-    color: white;
+.entities-text {
+    margin: 2vw;
 }

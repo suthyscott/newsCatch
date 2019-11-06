@@ -44,8 +44,16 @@
 }
 
 .analysis {
-    display: flex;
-    justify-content: space-evenly;
+    height: auto;
+    width: auto;
+    background-color: rgb(50,143,255);
+    z-index: 5;
+    position: fixed;
+    left: 2px;
+    top: 20vh;
+    border: .5px solid gray;
+    border-radius: 5px;
+    padding: 3vh
 }
 
 .analysis-button-bar {
@@ -69,6 +77,23 @@
 
 .analysis-buttons:hover {
     cursor: pointer;
+}
+
+#text-td {
+    width: 10vw;
+    height: auto;
+    padding: 1vh;
+    overflow-wrap: normal;
+}
+
+#type-td {
+    width: 20vw;
+}
+
+.entities-tr {
+    color: white;
+    font-family: 'Montserrat';
+    border: white .5px solid;
 }
 
 @media (min-width: 1000px){

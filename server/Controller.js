@@ -13,7 +13,7 @@ module.exports = {
 
     getSavedArticles: async (req, res) => {
         const db = req.app.get('db');
-        // console.log(req.session)
+        console.log(req.session)
         const {user_id} = req.session.user
 
         let usersArticles = await db.get_saved_articles(user_id)

@@ -43,7 +43,7 @@ function ArticleDisplay(props){
     }        
     useEffect(() => {
         comprehend.detectEntities(detectEntitiesParams, function(err, data) {
-        if(err) console.log(err, err.stack);
+        if(err) console.log('err, err.stack');
         else setEntities(data)
         })
     
@@ -57,7 +57,7 @@ function ArticleDisplay(props){
 
   
         comprehend.detectSentiment(detectSentimentParams, function(err, data) {
-        if(err) console.log(err, err.stack); 
+        if(err) console.log('err, err.stack'); 
         else setSentiment(data)
         })
   
@@ -72,7 +72,7 @@ function ArticleDisplay(props){
   
    
          comprehend.detectKeyPhrases(detectKeyPhrasesParams, function(err, data) {
-            if(err) console.log(err, err.stack); 
+            if(err) console.log('err, err.stack'); 
             else setKeyPhrases(data)
         })
 

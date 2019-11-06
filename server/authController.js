@@ -40,22 +40,51 @@ module.exports = {
         } else {
             res.status(401).send('Password is incorrect')
         }
-
-        // console.log(req.session)
     },
 
     logout: (req, res) => {
-        // console.log('hit logout', req.session)
         req.session.destroy();
-        // console.log(req.session)
         res.sendStatus(200)
     },
 
     checkUser: (req, res) => {
-        // console.log('hit checkUser', req.session)
         if(req.session.user){
             res.status(200).send(req.session.user)
         } 
         res.sendStatus(200)
+    },
+
+    getUserInfo: async (req, res) => {
+        console.log('hit getUserInfo')
+        const db = req.app.get('db');
+        console.log(req.session.user)
+        const {user_id} = req.session.user
+
+        let userInfo = await db.get_user_info(user_id);
+        userInfo = userInfo[0]
+        delete userInfo.password
+        res.status(200).send(userInfo);             
+    },
+
+    updateUserInfo: async (req, res) => {
+        const db = req.app.get('db');
+        const {email, first_name, last_name, currentPassword, newPassword} = req.body
+        const {user_id} = req.session.user
+
+        // let foundUser = await db.check_email(email)
+        // foundUser = foundUser[0]
+
+        // const authenticated = bcrypt.compareSync(currentPassword, foundUser.password)
+
+        // if(authenticated){
+        //     let userInfo = await db.get_user_info(user_id);
+        //     res.status(200).send(userInfo)
+        // } else {
+        //     res.status(401).send('Current password is not correct.')
+        // }
+
+        let userInfo = await db.update_user_info({user_id, email, first_name, last_name, password})
+
+        res.status(200).send(userInfo)
     }   
 }

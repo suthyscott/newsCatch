@@ -30,9 +30,12 @@ app.post('/api/auth/register', authCtrl.register)
 app.post('/api/auth/login', authCtrl.login)
 app.post('/api/auth/logout', authCtrl.logout)
 app.get('/api/auth/user', authCtrl.checkUser)
+app.get('/api/auth/userinfo', authCtrl.getUserInfo)
+app.put('/api/auth/userinfo', authCtrl.updateUserInfo)
 
 app.post('/api/article', ctrl.saveArticle)
 app.get('/api/savedarticles', ctrl.getSavedArticles)
+
 
  const port = SERVER_PORT
 

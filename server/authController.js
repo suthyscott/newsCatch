@@ -22,6 +22,7 @@ module.exports = {
     },
 
     login: async (req, res) => {
+        // console.log(req.body)
         const {email, password} = req.body;
         const db = req.app.get('db');
 
@@ -30,12 +31,14 @@ module.exports = {
         if(!foundUser){
             res.status(401).send('An account with that email does not exist.')
         }
-
+        console.log(password)
+        console.log(foundUser)
         const authenticated = bcrypt.compareSync(password, foundUser.password)
 
         if(authenticated){
             delete foundUser.password
             req.session.user = foundUser
+            console.log(req.session.user)
             return res.status(202).send(req.session.user)
         } else {
             res.status(401).send('Password is incorrect')
@@ -57,7 +60,7 @@ module.exports = {
     getUserInfo: async (req, res) => {
         console.log('hit getUserInfo')
         const db = req.app.get('db');
-        console.log(req.session.user)
+        console.log(req.session)
         const {user_id} = req.session.user
 
         let userInfo = await db.get_user_info(user_id);
@@ -70,21 +73,32 @@ module.exports = {
         const db = req.app.get('db');
         const {email, first_name, last_name, currentPassword, newPassword} = req.body
         const {user_id} = req.session.user
+        console.log('updateUserInfo', user_id)
 
-        // let foundUser = await db.check_email(email)
-        // foundUser = foundUser[0]
+        let userInfo = await db.get_user_info(user_id);
+        userInfo = userInfo[0]
+        console.log('updateUserInfo', userInfo)
 
-        // const authenticated = bcrypt.compareSync(currentPassword, foundUser.password)
+        const authenticated = bcrypt.compareSync(currentPassword, userInfo.password)
 
-        // if(authenticated){
-        //     let userInfo = await db.get_user_info(user_id);
-        //     res.status(200).send(userInfo)
-        // } else {
-        //     res.status(401).send('Current password is not correct.')
-        // }
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(newPassword, salt)
 
-        let userInfo = await db.update_user_info({user_id, email, first_name, last_name, password})
+        if(authenticated){
+            let updatedUserInfo = await db.update_user_info({user_id, email, first_name, last_name, password: hash})
+            delete updatedUserInfo[0].password
+            res.status(200).send(updatedUserInfo[0])
+        } else {
+            res.status(401).send('Current password is not correct.')
+        }
 
-        res.status(200).send(userInfo)
-    }   
+    },
+    
+    deleteAccount: async (req, res) => {
+        const db = req.app.get('db')
+        const {user_id} = req.session.user
+
+        let deleteConfirmation = db.delete_user(user_id);
+        res.status(200).send('Account has been deleted.')
+    }
 }

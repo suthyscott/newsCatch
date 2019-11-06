@@ -12,6 +12,7 @@ function Header(props){
     const [login, setLogin] = useState(false)
     const [userEmail, setUserEmail] = useState('')
     const [userPassword, setUserPassword] = useState('')
+
     
     // This method checks the session. If a user has logged in in the past eight hours it will fetch their data and pass it on to the redux store so that it can be used here in the component. 
     useEffect(() => {
@@ -45,6 +46,7 @@ function Header(props){
     const handleLoginUser = () => {
         axios.post('/api/auth/login', {email: userEmail, password: userPassword})
         .then(res => {
+            console.log(res.data)
             props.updateUser(res.data)
             props.history.push('/home')
         })

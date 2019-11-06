@@ -32,6 +32,7 @@ app.post('/api/auth/logout', authCtrl.logout)
 app.get('/api/auth/user', authCtrl.checkUser)
 app.get('/api/auth/userinfo', authCtrl.getUserInfo)
 app.put('/api/auth/userinfo', authCtrl.updateUserInfo)
+app.delete('/api/auth/user', authCtrl.deleteAccount)
 
 app.post('/api/article', ctrl.saveArticle)
 app.get('/api/savedarticles', ctrl.getSavedArticles)

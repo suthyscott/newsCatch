@@ -3,6 +3,7 @@ import axios from 'axios'
 import './Landing.css'
 import {Slide} from 'react-slideshow-image';
 import Microlink from '@microlink/react';
+import ReactPlayer from 'react-player';
 
 const config = require('../../Config');
 
@@ -16,8 +17,8 @@ function Landing(){
     }, [])
 
     console.log(feed[0].urlToImage)
-    console.log(feed[1].urlToImage)
-    console.log(feed[2].urlToImage)
+    console.log(feed[1].url)
+    console.log(feed[2])
     const slideImages = [
         `${feed[0].urlToImage}`, 
         `${feed[1].urlToImage}`,
@@ -41,14 +42,34 @@ function Landing(){
             <body className='landing-body'>
                 <section className='slider'>
                     <Slide {...properties}>
-                            <section className='landing-img' style={{backgroundImage: `url(${slideImages[0]})`}}>
-                                <span>{feed[0].title}</span>
-                            </section>
-                        <section>
-                            <section className='landing-img' style={{backgroundImage: `url(${slideImages[1]})`}}><span>{feed[1].title}</span></section>
+                        <section className='landing-section'>
+                            {feed[0].urlToImage ? (
+                            <section className='landing-img' style={{backgroundImage: `url(${feed[0].urlToImage})`}}></section>
+                            ) : (
+                                <ReactPlayer
+                                url={`${feed[0].url}`} />
+                            )}
+                            <div className='landing-headline-container'><span className='landing-headlines'>{feed[0].title}</span></div>
                         </section>
-                        <section>
-                            <section className='landing-img' style={{backgroundImage: `url(${slideImages[2]})`}}><span>{feed[2].title}</span></section>
+
+                        <section className='landing-section'>
+                            {feed[1].urlToImage ? (
+                            <section className='landing-img' style={{backgroundImage: `url(${feed[1].urlToImage})`}}></section>
+                            ) : (
+                                <ReactPlayer
+                                url={`${feed[1].url}`} />
+                            )}
+                            <div className='landing-headline-container'><span className='landing-headlines'>{feed[1].title}</span></div>
+                        </section>
+
+                        <section className='landing-section'>
+                            {feed[2].urlToImage ? (
+                            <section className='landing-img' style={{backgroundImage: `url(${feed[2].urlToImage})`}}></section>
+                            ) : (
+                                <ReactPlayer
+                                url={`${feed[2].url}`} />
+                            )}
+                            <div className='landing-headline-container'><span className='landing-headlines'>{feed[2].title}</span></div>
                         </section>
                     </Slide>
                 </section>

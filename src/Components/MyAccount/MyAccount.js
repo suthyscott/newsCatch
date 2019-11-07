@@ -39,16 +39,20 @@ function MyAccount(props){
     }
 
     const handleSaveChanges = () => {
-        axios.put('/api/auth/userinfo', {email, first_name: firstName, last_name: lastName, currentPassword, newPassword})
-        .then(res => {
-            console.log(res.data)
-            const {first_name, last_name, email} = res.data
-            setFirstName(first_name)
-            setLastName(last_name)
-            setEmail(email)
-        })
-        .catch(err => console.log(err))
-        setEditing(false)
+        if(newPassword === confirmNewPassword){
+            axios.put('/api/auth/userinfo', {email, first_name: firstName, last_name: lastName, currentPassword, newPassword})
+            .then(res => {
+                console.log(res.data)
+                const {first_name, last_name, email} = res.data
+                setFirstName(first_name)
+                setLastName(last_name)
+                setEmail(email)
+            })
+            .catch(err => console.log(err))
+            setEditing(false)
+        } else {
+            alert('New passwords do not match. Please re-confirm passwords to continue.')
+        }
     }
     
     const handleDeleteAccount = () => {

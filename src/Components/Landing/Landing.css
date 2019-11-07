@@ -1,6 +1,18 @@
 .landing-body {
-    height: auto;
+    height: 90vh;
     position: relative;
-    top: 9vh;
-    border: 1px solid black
+    top: 10vh;
+    border: 1px solid black;
+    background-color: rgb(194, 207, 223);
+}
+
+.slider {
+    height: 80vh;
+    width: 100%;
+}
+
+.landing-img {
+    height: 80vh;
+    width: 100%;
+    z-index: 5;
 }

@@ -5,17 +5,16 @@ import ArticleDisplay from '../ArticleDisplay/ArticleDisplay'
 function SavedArticles(){
     const [feed, setFeed] = useState([])
     const [search, setSearch] = useState('')
+    const [removedArticle, setRemovedArticle] = useState(false)
 
 
     useEffect(() => {
-        console.log('hit useEffect')
         axios.get('/api/savedarticles')
         .then(res => {
-            console.log("hit .then")
             setFeed(res.data)
         })
         .catch(err => console.log(err))
-    }, [])
+    }, [removedArticle])
 
     const handleSearch = () => {
        console.log('searching')
@@ -38,7 +37,7 @@ function SavedArticles(){
 
                 {feed.map((e, i) => {
                     console.log(e)
-                    return <ArticleDisplay article={e} key={'saved-article',i}/>
+                    return <ArticleDisplay article={e} key={'saved-article',i} removedArticle={removedArticle} setRemovedArticle={setRemovedArticle}/>
                 })}
             </article>
         </main>

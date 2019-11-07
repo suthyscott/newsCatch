@@ -22,7 +22,6 @@
 }
 
 .article-nav-button-bar {
-    border-top: solid 1px rgb(50,143,255);
     height: 6vh;
     display: flex;
     align-items: center;

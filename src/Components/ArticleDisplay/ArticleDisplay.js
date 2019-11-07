@@ -19,6 +19,7 @@ function ArticleDisplay(props){
     const [entities, setEntities] = useState({Entities: [
         {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'},  {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}, {BeginOffset:1, EndOffset: 2, Score: 3, Text: 'Louisiana', Type: 'Location'}]})
     const [sentiment, setSentiment] = useState({SentimentScore: {Positive: 1, Negative: 2, Neutral: 3, Mixed: 4}, Sentiment: 'Positive'})
+    const [pathIsSavedArticles, setPathIsSavedArticles] = useState(false)
 
 
     const config = require('../../Config')
@@ -96,6 +97,21 @@ function ArticleDisplay(props){
         props.passArticle(article, sentiment, entities, keyPhrases)
     }
 
+    const removeArticle = () => {
+        const {article_id} = props.article
+        axios.delete(`/api/article/${article_id}`)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+        props.setRemovedArticle(!props.removedArticle)
+    }
+    
+    useEffect(() => {
+        if(props.match.path === '/savedarticles'){
+           return setPathIsSavedArticles(true)
+        } else {
+           return setPathIsSavedArticles(false)
+        }
+    }, [])
 
     return(
         <main className='article-display'>
@@ -109,7 +125,12 @@ function ArticleDisplay(props){
 
                     <section className='article-nav-button-bar'>
                     <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
-                    <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
+                    
+                    {pathIsSavedArticles ? (
+                        <button className='article-nav-buttons' onClick={() => removeArticle()}>Remove</button>
+                        ) : (
+                        <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
+                    )}
                     </section>
                         
                 </section>

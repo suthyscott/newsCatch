@@ -4,17 +4,48 @@ import {connect} from 'react-redux';
 import './SingleArticle.css'
 
 function SingleArticle(props){
-    // const [displaySentiment, setDisplaySentiment] = useState(false)
-    // const [displayEntities, setDisplayEntities] = useState(false)
-    // const [displayKeyPhrases, setDisplayKeyPhrases] = useState(false)
-    // const [displayAnalysis, setDisplayAnalysis] = useState(false)
+//   have a footer for the analysis and any other buttons. 
 
     console.log(props)
     console.log(props.article.url_to_image)
     console.log(props.article.title)
 
     
-    // const toggleDisplayEntities = (e) => {
+
+    
+    return(
+        <div>
+            <h1 id='test-headline'>SingleArticle</h1>
+            {props.article.urlToImage ? (<img src={props.article.urlToImage}/>) : <img src={props.article.url_to_image}/>}
+            <p>{props.article.title}</p>            
+        </div>
+    )
+}
+
+// Receiving state from authReducer.
+const mapStateToProps = reduxState => {
+    const {article, sentiment, entities, keyPhrases} = reduxState.articleReducer;
+    return {
+        article, 
+        sentiment, 
+        entities,
+        keyPhrases
+    }
+}
+
+// Still not quite sure exactly what this does. 
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SingleArticle))
+
+  // const [displaySentiment, setDisplaySentiment] = useState(false)
+    // const [displayEntities, setDisplayEntities] = useState(false)
+    // const [displayKeyPhrases, setDisplayKeyPhrases] = useState(false)
+    // const [displayAnalysis, setDisplayAnalysis] = useState(false)
+
+        // const toggleDisplayEntities = (e) => {
     //     setDisplayAnalysis(!displayAnalysis)
     //     setDisplayEntities(!displayEntities)
     //     console.log(e)
@@ -49,14 +80,9 @@ function SingleArticle(props){
     //         return <th>key</th>
     //     })
     // }
-    
-    return(
-        <div>
-            <h1 id='test-headline'>SingleArticle</h1>
-            <img src={props.article.url_to_image}/>
-            <p>{props.article.title}</p>
 
-            {/* 
+
+                {/* 
             <section className='analysis-button-bar'>
                         <button className='analysis-buttons' onMouseOver={(e) => toggleDisplaySentiment(e)} onMouseOut={(e) => toggleDisplaySentiment(e)}>Sentiment</button>
                         <button className='analysis-buttons' onMouseOver={(e) => toggleDisplayEntities(e)} onMouseOut={(e) => toggleDisplayEntities(e)}>Entities</button>
@@ -77,25 +103,3 @@ function SingleArticle(props){
                             return <KeyPhrasesDisplay keyPhrase={e} key={`keyPhrase key${i}`}/>
                         }) ) : null}
                     </section>) : null} */}
-            
-        </div>
-    )
-}
-
-// Receiving state from authReducer.
-const mapStateToProps = reduxState => {
-    const {article, sentiment, entities, keyPhrases} = reduxState.articleReducer;
-    return {
-        article, 
-        sentiment, 
-        entities,
-        keyPhrases
-    }
-}
-
-// Still not quite sure exactly what this does. 
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SingleArticle))

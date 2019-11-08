@@ -71,9 +71,10 @@ function MyAccount(props){
             <p className='info-line'>{lastName}</p>
             <p className='info-line'>{email}</p>
             <button className='my-account-buttons' id='my-account-edit-button' onClick={() => setEditing(true)}>Edit</button>
+            <button className='my-account-buttons' onClick={() => handleDeleteAccount()}>Delete Account</button>
         </div>
         ) : (
-            <div className='info-container'>
+            <div className='info-container-editing'>
                 First Name
                 <input 
                 className='info-input'
@@ -113,9 +114,9 @@ function MyAccount(props){
 
                 <button className='my-account-buttons' id='my-account-cancel-button' onClick={() => handleCancel()}>Cancel</button>
                 <button className='my-account-buttons' id='my-account-save-changes-button' onClick={() => handleSaveChanges()}>Save Changes</button>
+                <button className='my-account-buttons' onClick={() => handleDeleteAccount()}>Delete Account</button>
             </div>
         )}
-        <button className='my-account-buttons' onClick={() => handleDeleteAccount()}>Delete Account</button>
       </body>
     )
 }

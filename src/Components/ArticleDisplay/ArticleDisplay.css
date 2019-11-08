@@ -29,7 +29,7 @@
 }
 
 .article-nav-buttons {
-    border-radius: 15px;
+    border-radius: 20px;
     border: rgb(50,143,255) solid .5px;
     color: rgb(50,143,255);
     background-color: transparent;
@@ -48,27 +48,13 @@
     cursor: pointer;
 }
 
-#text-td {
-    width: 10vw;
-    height: auto;
-    padding: 1vh;
-    overflow-wrap: normal;
-}
-
-#type-td {
-    width: 20vw;
-}
-
-.entities-tr {
-    color: white;
-    font-family: 'Montserrat';
-    border: white .5px solid;
-}
-
 .text-and-buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+#article-remove-button {
+    width: 30vw;
 }
 
 @media (min-width: 1000px){
@@ -94,7 +80,7 @@
     }
 
     .article-nav-buttons {
-        border-radius: 15px;
+        border-radius: 20px;
         border: rgb(50,143,255) solid .5px;
         color: rgb(50,143,255);
         background-color: transparent;
@@ -102,10 +88,10 @@
         font-size: 3vh;
         margin: 0vh 3vw;
         padding: 1vh;
-        width: 10vw
     }
     
     #view-article-button {
         width: 20vw
     }
+
 }

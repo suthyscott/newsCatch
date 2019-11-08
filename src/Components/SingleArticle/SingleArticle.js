@@ -81,19 +81,52 @@ function SingleArticle(props){
      }, [])
 
     const toggleDisplayEntities = (e) => {
-        setDisplayAnalysis(!displayAnalysis)
-        setDisplayEntities(!displayEntities)
-        console.log(e)
+        if(displayAnalysis === false){
+            setDisplayAnalysis(true)
+            setDisplayEntities(true)
+            setDisplayKeyPhrases(false)
+            setDisplaySentiment(false)
+        } else if(displayAnalysis === true && displayEntities === false) {
+            setDisplayAnalysis(true)
+            setDisplayEntities(true)
+            setDisplayKeyPhrases(false)
+            setDisplaySentiment(false)
+        } else {
+            setDisplayAnalysis(false)
+        }
+        
     }
 
     const toggleDisplaySentiment = () => {
-        setDisplayAnalysis(!displayAnalysis)
-        setDisplaySentiment(!displaySentiment)
+        if(displayAnalysis === false){
+            setDisplayAnalysis(true)
+            setDisplayEntities(false)
+            setDisplayKeyPhrases(false)
+            setDisplaySentiment(true)
+        } else if(displayAnalysis === true && displaySentiment === false) {
+            setDisplayAnalysis(true)
+            setDisplayEntities(false)
+            setDisplayKeyPhrases(false)
+            setDisplaySentiment(true)
+        } else {
+            setDisplayAnalysis(false)
+        }
     }
 
     const toggleDisplayKeyPhrases = () => {
-        setDisplayAnalysis(!displayAnalysis)
-        setDisplayKeyPhrases(!displayKeyPhrases)
+        if(displayAnalysis === false){
+            setDisplayAnalysis(true)
+            setDisplayEntities(false)
+            setDisplayKeyPhrases(true)
+            setDisplaySentiment(false)
+        } else if(displayAnalysis === true && displayKeyPhrases === false) {
+            setDisplayAnalysis(true)
+            setDisplayEntities(false)
+            setDisplayKeyPhrases(true)
+            setDisplaySentiment(false)
+        } else {
+            setDisplayAnalysis(false)
+        }
     }
 
     const renderEntitiesTable = () => {
@@ -109,60 +142,89 @@ function SingleArticle(props){
         })
     }
 
+    const renderKeyPhrasesTable = () => {
+        return keyPhrases.KeyPhrases.map((e,i) =>{
+            const {Score, Text, Type} = e
+            return (
+                <tr className='entities-tr'>
+                    <td className='key-phrases-property' id='text-td'>{Text}</td>
+                    <td className='key-phrases-property' id='score-td'>{Score.toFixed(3)}</td>
+                </tr>
+            )
+        })
+    }
+
     const renderEntitiesTableHeader = () => {
-        // let header = [entities.Entities.Text.toUpperCase(), entities.Entities.Type.toUpperCase(), entities.Entities.Score.toUpperCase()]
-        // return header.map(key => {
-        //     return <th>key</th>
-        // })
+        let header = ['ENTITY', 'TYPE', 'CONFIDENCE LEVEL']
+        return header.map((key, i) => {
+            return <th className='entities-table-header' key={i}>{key}</th>
+        })
+    }
+
+    const renderKeyPhrasesTableHeader = () => {
+        let header = ['KEY PHRASE', 'CONFIDENCE LEVEL']
+        return header.map((key, i) => {
+            return <th className='key-phrases-table-header' key={i}>{key}</th>
+        })
     }
 
     console.log(props)
-    console.log(props.article.url_to_image)
-    console.log(props.article.content)    
+    // console.log(props.article.url_to_image)
+    // console.log(props.article.content)    
 
     
     return(
         <body className='single-article-body'>
-            {props.article.urlToImage ? (<img src={props.article.urlToImage}/>) : <img className='article-image' src={props.article.url_to_image}/>}
-            <p className='article-title' >{props.article.title}</p> 
-            <p className='article-text'>{props.article.description}</p>   
-            <a className='article-link' href={`${props.article.url}`}>Read</a>
+
 
             <footer className='analysis-footer'>
-                <button className='analysis-buttons' onMouseOver={(e) => toggleDisplaySentiment(e)} onMouseOut={(e) => toggleDisplaySentiment(e)}>Sentiment</button>
+                <button className='analysis-buttons' onClick={(e) => toggleDisplaySentiment(e)}>Sentiment</button>
 
-                <button className='analysis-buttons' onMouseOver={(e) => toggleDisplayEntities(e)} onMouseOut={(e) => toggleDisplayEntities(e)}>Entities</button>
+                <button className='analysis-buttons' onClick={(e) => toggleDisplayEntities(e)}>Entities</button>
 
-                <button className='analysis-buttons' onMouseOver={(e) => toggleDisplayKeyPhrases(e)} onMouseOut={(e) => toggleDisplayKeyPhrases(e)}>Key Phrases</button>
+                <button className='analysis-buttons' onClick={(e) => toggleDisplayKeyPhrases(e)}>Key Phrases</button>
             </footer>        
 
-            {displayAnalysis ? ( <section className='analysis'>
-                {displaySentiment ? (
-                    <section>
-                        <SentimentPieChart sentiment={sentiment.SentimentScore}/>
-                    </section>
-                ) : null}
+            {displayAnalysis ? (
+                <section id='analysis'>
+                    {displaySentiment ? (
+                        <section className='sentiment-pie-chart'>
+                            <SentimentPieChart sentiment={sentiment.SentimentScore}/>
+                        </section>
+                        ) : null}
 
-                {displayEntities ? (
-                <body>
-                    <tr>{renderEntitiesTableHeader()}</tr>
-                        {renderEntitiesTable()}
-                </body>
-                ) : null}
+                    {displayEntities ? (
+                        <body className='entities-table'>
+                            <tr>{renderEntitiesTableHeader()}</tr>
+                            {renderEntitiesTable()}
+                        </body>
+                        ) : null}
+                        
+                    {displayKeyPhrases ? (
+                        <body className='key-phrases-table'>
+                            <tr>{renderKeyPhrasesTableHeader()}</tr>
+                            {renderKeyPhrasesTable()}
+                        </body>
                     
-            {displayKeyPhrases ? (
-                <section className='analysis'>
-                    {keyPhrases.KeyPhrases.map((e,i) => {
-                    return <KeyPhrasesDisplay keyPhrase={e} key={`keyPhrase key${i}`}/>
-                })}
-                </section>
-             ) : null}
-            </section>) : null}
+                    ) : null }
+            </section>
+            ) : (
+                <div>
+                        <p className='article-title' >{props.article.title}</p> 
+                        {props.article.urlToImage ? (<img className='article-image' src={props.article.urlToImage}/>) : <img className='article-image' src={props.article.url_to_image}/>}
+                        <p className='article-text'>{props.article.content ? (
+                            props.article.content
+                        ) : (
+                            props.article.description
+                        )}</p>   
+                        <button className='read-article-button'><a className='article-link' href={`${props.article.url}`} target='_blank'>Read Full Article</a></button>
+                    </div>
+            )}
         </body>
     )
 }
 
-// Receiving state from authReducer.
+// Receiving state from articleReducer.
 const mapStateToProps = reduxState => {
     const {article, sentiment, entities, keyPhrases} = reduxState.articleReducer;
     return {

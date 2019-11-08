@@ -6,7 +6,7 @@
     margin: 4vh;
     padding: 1vh;
     border: .5px solid rgb(50,143,255);
-    border-radius: 15px;
+    border-radius: 20px;
     color: black;
     font-size: 2vh;
     font-family: 'Montserrat';
@@ -19,7 +19,7 @@
     top: 8vh;
     margin: 2vh;
     border: .5px solid rgb(50,143,255);
-    border-radius: 15px;
+    border-radius: 20px;
     color: black;
     font-size: 2.5vh;
     font-family: 'Montserrat';
@@ -43,7 +43,7 @@
         margin: 4vh;
         padding: 1vh;
         border: .5px solid rgb(50,143,255);
-        border-radius: 15px;
+        border-radius: 20px;
         color: black;
         font-size: 3vh;
         font-family: 'Montserrat';
@@ -56,7 +56,7 @@
         top: 8vh;
         margin: 2vh;
         border: .5px solid rgb(50,143,255);
-        border-radius: 15px;
+        border-radius: 20px;
         color: black;
         font-size: 3.5vh;
         font-family: 'Montserrat';

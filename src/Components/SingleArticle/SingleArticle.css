@@ -1,6 +1,11 @@
+.single-article-body{
+    position: relative;
+    top: 15vh;
+}
+
 .article-image {
-    height: 400px;
-    width: 600px;
+    height: auto;
+    max-width: 70%;
 }
 
 .analysis-footer {
@@ -10,26 +15,148 @@
     z-index: 5;
     position: fixed;
     bottom: 0;
-    padding: 3vh
+    padding: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .analysis-buttons {
     border: none;
     background-color: transparent;
-    color: rgb(136, 146, 158);
+    color: white;
     font-family: 'Montserrat';
     font-size: 2.5vh;
+    height: 5vh;
+    width: 33.3333333%;
 }
 
 .analysis-buttons:hover {
     cursor: pointer;
+    background: rgb(0, 112, 250);
+}
+
+.article-title {
+    font-family: 'Montserrat';
+    font-size: 5.5vh;
+    font-weight: bold;
+    margin-bottom: 3vh;
 }
 
 .article-text {
-    height: 200px;
-    width: 80vw;
+    font-family: 'Montserrat';
+    font-size: 3;
+    margin-top: 5vh;
 }
 
-.analysis {
-    background-color: rgb(50,143,255);
+.read-article-button {
+    margin-bottom: 10vh;
+    margin-top: 2vh;
+    color: rgb(50,143,255);
+    border: .5px solid rgb(50,143,255);
+    background-color: white;
+    height: 6vh;
+    width: 30vw;
+    border-radius: 20px;
+    font-family: 'Montserrat';
+    font-size: 3.5vh;
 }
+
+.article-link {
+    color: rgb(50,143,255);
+    text-decoration: none;
+}
+
+#analysis {
+    background-color: rgb(50,143,255);
+    height: 200%;
+    width: 100%;
+    position: relative;
+    bottom: 5vh;
+
+}
+
+.entities-table {
+    padding: 10vh 15vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    width: 70vw;
+}
+
+.entities-table-header {
+    font-family: 'Montserrat';
+    font-size: 4vh;
+    font-weight: bold;
+    color: white;
+}
+
+.entities-property {
+    margin: 2vh;
+}
+
+#text-td {
+    width: 10vw;
+    height: auto;
+    padding: 2vh 0;
+    overflow-wrap: normal;
+    margin: 2vh;
+}
+
+#type-td {
+    width: 30vw;
+}
+
+.entities-tr {
+    color: white;
+    font-family: 'Montserrat';
+}
+
+.key-phrases-table {
+    padding: 10vh 15vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    width: 70vw;
+}
+
+.key-phrases-property {
+    padding: 2vh 6vw;
+}
+
+.key-phrases-table-header {
+    font-family: 'Montserrat';
+    font-size: 4vh;
+    font-weight: bold;
+    color: white;
+    padding: 0vh 5vw;
+}
+
+.entities-property {
+    margin: 2vh;
+}
+
+ @media(max-width: 600px){
+    .single-article-body {
+        top: 10vh
+    }
+    
+    .article-title {
+        font-family: 'Montserrat';
+        font-size: 5vh;
+        font-weight: bold;
+        margin-bottom: 3vh;
+    }
+    
+    .article-text {
+        font-family: 'Montserrat';
+        font-size: 3.5vh;
+        margin-top: 5vh;
+    }
+
+
+    .read-article-button {
+        margin-bottom: 10vh;
+        margin-top: 2vh;
+        height: 6vh;
+        width: 60vw;
+    }
+ }

@@ -25,7 +25,7 @@ function SentimentPieChart(props){
 
     return(
         <div >
-            <h1 className='sentiment-header'>Sentiment Pie Chart</h1>
+            <h1 className='sentiment-header'>Sentiment</h1>
             <Pie className='sentiment-pie-chart'
             data={{
                 labels: labels,

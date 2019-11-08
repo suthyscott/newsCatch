@@ -64,12 +64,19 @@ function ArticleDisplay(props){
                     <h1 className='headlines'>{title}</h1>             
 
                     <section className='article-nav-button-bar'>
-                    <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
+                    
                     
                     {pathIsSavedArticles ? (
-                        <button className='article-nav-buttons' onClick={() => removeArticle()}>Remove</button>
+                        <section>
+                            <button className='article-nav-buttons' id='article-remove-button' onClick={() => removeArticle()}>Remove</button>
+                            <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' id='view-article-button' onClick={() => viewArticle()} >View Article</button></Link>
+                        </section>                        
                         ) : (
-                        <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' id='view-article-button' onClick={() => viewArticle()} >View Article</button></Link>
+                        <section>
+                            <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
+                            <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' id='view-article-button' onClick={() => viewArticle()} >View Article</button></Link>
+                        </section>
+                       
                     )}
                     </section>
                         

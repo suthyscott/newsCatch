@@ -17,8 +17,8 @@ function Landing(){
     }, [])
 
     // console.log(feed[0].urlToImage)
-    // console.log(feed[1].url)
-    // console.log(feed[2])
+    console.log(feed[1])
+    console.log(feed[2])
     const slideImages = [
         `${feed[0].urlToImage}`, 
         `${feed[1].urlToImage}`,

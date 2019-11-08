@@ -120,6 +120,7 @@ function Header(props){
                         placeholder='email'
                         onChange={e => setUserEmail(e.target.value)} />
                         <input
+                        type='password'
                         className='login-input'
                         placeholder='password'
                         onChange={e => setUserPassword(e.target.value)} />

@@ -6,9 +6,6 @@ import axios from 'axios';
 import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {passArticle} from '../../ducks/articleReducer';
-import SentimentPieChart from '../SentimentPieChart/SentimentPieChart';
-import EntitiesDisplay from '../EntitiesDisplay/EntitiesDisplay';
-import KeyPhrasesDisplay from '../KeyPhrasesDisplay/KeyPhrasesDisplay';
 
 function ArticleDisplay(props){
     const {article} = props
@@ -22,63 +19,6 @@ function ArticleDisplay(props){
     const [pathIsSavedArticles, setPathIsSavedArticles] = useState(false)
 
 
-    const config = require('../../Config')
-    
-    var AWS = require('aws-sdk/dist/aws-sdk-react-native')
-
-    // I had to use this config.update because it wasn't reading the credentials or region from the correct folder. Since I have no idea where that folder might be or why it's not reading, i'm updating those here. I don't know how secure it is. 
-    AWS.config.update({
-        region:'us-west-2',
-        accessKeyId: config.AWS_ACCESS_KEY_ID,
-        secretAccessKey: config.AWS_SECRET_ACCESS_KEY
-    })
-    // this is a possible alternative to the above if I can figure out the pathname to the actual config file.
-    // AWS.config.loadFromPath('./AwsConfig.json');
-
-    var comprehend = new AWS.Comprehend({apiVersion: '2017-11-27'});
-    
-    // This function sends the article's content to Amazon comprehend and attaches the entities to the article object.
-    var detectEntitiesParams = {
-        LanguageCode: 'en',
-        Text: content
-    }        
-    useEffect(() => {
-        comprehend.detectEntities(detectEntitiesParams, function(err, data) {
-        if(err) console.log('err, err.stack');
-        else setEntities(data)
-        })
-    
-    
-
-        // This function sends the article's content to Amazon comprehend and attaches the sentiment to the article object.
-    var detectSentimentParams = {
-        LanguageCode: 'en',
-        Text: content
-    }
-
-  
-        comprehend.detectSentiment(detectSentimentParams, function(err, data) {
-        if(err) console.log('err, err.stack'); 
-        else setSentiment(data)
-        })
-  
-    
-
-        // This function sends the article's content to Amazon comprehend and attaches the key phrases to the article object.
-    var detectKeyPhrasesParams = {
-        LanguageCode: 'en',
-        Text: content
-    }
-
-  
-   
-         comprehend.detectKeyPhrases(detectKeyPhrasesParams, function(err, data) {
-            if(err) console.log('err, err.stack'); 
-            else setKeyPhrases(data)
-        })
-
-
-     }, [])
         
 
 
@@ -129,7 +69,7 @@ function ArticleDisplay(props){
                     {pathIsSavedArticles ? (
                         <button className='article-nav-buttons' onClick={() => removeArticle()}>Remove</button>
                         ) : (
-                        <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' onClick={() => viewArticle()} >View Article</button></Link>
+                        <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' id='view-article-button' onClick={() => viewArticle()} >View Article</button></Link>
                     )}
                     </section>
                         

@@ -1,4 +1,41 @@
 .account-info {
     position: relative;
-    top: 20vh;
+    top: 15vh;
+}
+
+.info-container {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 4vh;
+    color: rgb(132, 154, 180);
+}
+
+#my-account-header {
+    font-family: 'Montserrat';
+    font-size: 6vh;
+}
+
+.my-account-buttons {
+    height: 6vh;
+    font-family: 'Montserrat';
+    font-size: 3vh;
+    border: rgb(50,143,255) .5px solid;
+    border-radius: 20px;;
+    background-color: white;
+    color: rgb(50,143,255);
+    padding: 1vh 4vw;
+    margin: 3vw;
+}
+
+#my-account-edit-button{
+    background-color: rgb(50,143,255);
+    border-radius: 20px;
+    border: none;
+    width: 20vw;
+    color: white;
+
 }

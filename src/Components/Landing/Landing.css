@@ -6,8 +6,8 @@
 }
 
 .slider {
-    background: rgb(50,143,255);
-    /* height: fit-content; */
+    background: white;
+    /* background: rgb(50,143,255); */
 }
 
 .landing-img {
@@ -36,7 +36,7 @@
 .landing-headlines {
     color: white;
     font-family: 'Montserrat';
-    font-size: 7vh;
+    font-size: 6vh;
     font-weight: bold;
     word-wrap: normal;
     text-align: right;

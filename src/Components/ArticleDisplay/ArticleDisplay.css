@@ -14,7 +14,7 @@
 
 .headlines {
     color: black;
-    margin: 2vh 8vw;
+    margin: 2vh 8vw 4vh 8vw;
     font-weight: bold;
     font-size: 3vh;
     text-align: left;
@@ -30,51 +30,21 @@
 
 .article-nav-buttons {
     border-radius: 15px;
-    border: none;
+    border: rgb(50,143,255) solid .5px;
     color: rgb(50,143,255);
     background-color: transparent;
     font-family: 'Montserrat';
     font-size: 3vh;
     margin: 0vh 3vw;
+    padding: 1vh;
+    width: 20vw
+}
+
+#view-article-button {
+    width: 40vw
 }
 
 .article-nav-buttons:hover {
-    cursor: pointer;
-}
-
-.analysis {
-    height: auto;
-    width: auto;
-    background-color: rgb(50,143,255);
-    z-index: 5;
-    position: fixed;
-    left: 2px;
-    top: 20vh;
-    border: .5px solid gray;
-    border-radius: 5px;
-    padding: 3vh
-}
-
-.analysis-button-bar {
-    height: 6vh;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-top: rgb(136, 146, 158) solid 1px;
-    border-bottom: rgb(136, 146, 158) solid 1px;
-}
-
-.analysis-buttons {
-    border: none;
-    background-color: transparent;
-    color: rgb(136, 146, 158);
-    font-family: 'Montserrat';
-    font-size: 2.5vh;
-}
-
-.analysis-buttons:hover {
     cursor: pointer;
 }
 
@@ -95,6 +65,12 @@
     border: white .5px solid;
 }
 
+.text-and-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 @media (min-width: 1000px){
     .article {
         display: flex;
@@ -108,12 +84,6 @@
         margin-right: 6vh;
     }
 
-    /* .text-and-buttons {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-    } */
-
     .article-nav-button-bar {
         margin-top: 10vh;
         width: 98%;
@@ -121,5 +91,21 @@
     
     .analysis-button-bar {
         width: 98%;
+    }
+
+    .article-nav-buttons {
+        border-radius: 15px;
+        border: rgb(50,143,255) solid .5px;
+        color: rgb(50,143,255);
+        background-color: transparent;
+        font-family: 'Montserrat';
+        font-size: 3vh;
+        margin: 0vh 3vw;
+        padding: 1vh;
+        width: 10vw
+    }
+    
+    #view-article-button {
+        width: 20vw
     }
 }

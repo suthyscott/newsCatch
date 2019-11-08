@@ -16,9 +16,9 @@ function Landing(){
         .catch(err => console.log(err))
     }, [])
 
-    console.log(feed[0].urlToImage)
-    console.log(feed[1].url)
-    console.log(feed[2])
+    // console.log(feed[0].urlToImage)
+    // console.log(feed[1].url)
+    // console.log(feed[2])
     const slideImages = [
         `${feed[0].urlToImage}`, 
         `${feed[1].urlToImage}`,
@@ -33,9 +33,9 @@ function Landing(){
         arrows: true
     }
 
-    console.log(slideImages[0])
-    console.log(slideImages[1])
-    console.log(slideImages[2])
+    // console.log(slideImages[0])
+    // console.log(slideImages[1])
+    // console.log(slideImages[2])
 
     const slideShow = () => {
         return (

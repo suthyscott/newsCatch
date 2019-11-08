@@ -15,7 +15,7 @@
 
 .register-input {
     height: 3vh;
-    width: 70vw;
+    width: 40vw;
     position: relative;
     margin: 1vw;
     font-size: 2vh;
@@ -28,15 +28,50 @@
 
 #register-button {
     height: 5vh;
-    width: 30vw;
+    width: 15vw;
     border: none;
     background: rgb(50,143,255);
     color: white;
     font-family: 'Montserrat';
     font-size: 2.5vh;
     border-radius: 15px;
+    margin-left: 4vw;
 }
 
 #register-button:hover {
     cursor: pointer;
+}
+
+#cancel-button {
+    height: 5vh;
+    width: 15vw;
+    border: rgb(50,143,255) .5px solid;
+    background: white;
+    color: rgb(50,143,255);
+    font-family: 'Montserrat';
+    font-size: 2.5vh;
+    border-radius: 20px;
+    margin-right: 4vw;
+}
+
+#cancel-button:hover {
+    cursor: pointer;
+}
+
+#register-nav-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width: 600px){
+    .register-input{
+        width: 60vw
+    }
+    #register-button {
+        width: 30vw;
+    }
+
+    #cancel-button {
+        width: 30vw;
+    }
 }

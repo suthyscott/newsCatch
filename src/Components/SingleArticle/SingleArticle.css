@@ -1,4 +1,35 @@
-#test-headline {
-    position: relative;
-    top: 20vh;
+.article-image {
+    height: 400px;
+    width: 600px;
+}
+
+.analysis-footer {
+    height: 5vh;
+    width: 100%;
+    background-color: rgb(50,143,255);
+    z-index: 5;
+    position: fixed;
+    bottom: 0;
+    padding: 3vh
+}
+
+.analysis-buttons {
+    border: none;
+    background-color: transparent;
+    color: rgb(136, 146, 158);
+    font-family: 'Montserrat';
+    font-size: 2.5vh;
+}
+
+.analysis-buttons:hover {
+    cursor: pointer;
+}
+
+.article-text {
+    height: 200px;
+    width: 80vw;
+}
+
+.analysis {
+    background-color: rgb(50,143,255);
 }

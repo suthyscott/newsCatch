@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ArticleDisplay from '../ArticleDisplay/ArticleDisplay';
 import './Home.css'
+import Landing from '../Landing/Landing';
 
 const config = require('../../Config');
 
@@ -26,7 +27,8 @@ function Home(props){
 
     return(
         <main>
-            <article >
+            
+            <Landing />
             <section className='search-box'>
                 <input 
                 className='search-input'
@@ -37,6 +39,7 @@ function Home(props){
                 <button onClick={() => handleSearch()} className='search-button' >Search</button>
             </section>
 
+            <article className='articles-list'>
             {feed.map((e, i) => {
                 return <ArticleDisplay article={e} key={'home-article', i}/>
             })}

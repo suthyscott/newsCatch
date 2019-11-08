@@ -5,7 +5,7 @@ import './SentimentPieChart.css'
 function SentimentPieChart(props){
     const {Positive, Negative, Neutral, Mixed} = props.sentiment
     const [labels, setLabels] = useState(['Positive', 'Negative', 'Neutral', 'Mixed'])
-    // console.log(Positive, Negative, Neutral, Mixed)
+    console.log(Positive, Negative, Neutral, Mixed)
 
     const [datasets, setDatasets] = useState([
         {

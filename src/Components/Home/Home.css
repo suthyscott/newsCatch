@@ -30,5 +30,41 @@
 .search-box {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 
+}
+
+@media(min-width: 1000px){
+    .search-input {
+        height: 6vh;
+        width: 40vw;
+        position: relative;
+        top: 8vh;
+        margin: 4vh;
+        padding: 1vh;
+        border: .5px solid rgb(50,143,255);
+        border-radius: 15px;
+        color: black;
+        font-size: 3vh;
+        font-family: 'Montserrat';
+    } 
+    
+    .search-button {
+        height: 6vh;
+        width: 25vw;
+        position: relative;
+        top: 8vh;
+        margin: 2vh;
+        border: .5px solid rgb(50,143,255);
+        border-radius: 15px;
+        color: black;
+        font-size: 3.5vh;
+        font-family: 'Montserrat';
+        color: white;
+        background-color: rgb(50,143,255);
+    } 
+
+    .articles-list{
+        flex-wrap: wrap;
+    }
 }

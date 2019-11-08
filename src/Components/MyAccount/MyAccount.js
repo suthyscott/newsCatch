@@ -64,49 +64,58 @@ function MyAccount(props){
 
     return(
       <body className='account-info'>
-          <h1>MyAccount</h1>
+          <h1 id='my-account-header'>MyAccount</h1>
             {!editing ? (
-            <div >
-            <p>{firstName}</p>
-            <p>{lastName}</p>
-            <p>{email}</p>
-            <button onClick={() => setEditing(true)}>Edit</button>
+            <div className='info-container'>
+            <p className='info-line'>{firstName}</p>
+            <p className='info-line'>{lastName}</p>
+            <p className='info-line'>{email}</p>
+            <button className='my-account-buttons' id='my-account-edit-button' onClick={() => setEditing(true)}>Edit</button>
         </div>
         ) : (
-            <div>
+            <div className='info-container'>
                 First Name
                 <input 
+                className='info-input'
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)} /><br/>
                 Last Name
                 <input 
+                className='info-input'
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)} /><br/>
                 Email
                 <input 
+                className='info-input'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} /><br/>
                 Current Password
                 <input
+                className='info-input'
+                type='password'
                 value={currentPassword}
                 placeholder='Current Password'
                 onChange={(e) => setCurrentPassword(e.target.value)} /><br/>
                 New Password
                 <input 
+                className='info-input'
+                type='password'
                 value={newPassword}
                 placeholder='New Password'
                 onChange={(e) => setNewPassword(e.target.value)} /><br/>
                 Confirm New Password
                 <input 
+                className='info-input'
+                type='password'
                 value={confirmNewPassword}
                 placeholder='Confirm New Password'
                 onChange={(e) => setConfirmNewPassword(e.target.value)} /><br/>
 
-                <button onClick={() => handleCancel()}>Cancel</button>
-                <button onClick={() => handleSaveChanges()}>Save Changes</button>
+                <button className='my-account-buttons' id='my-account-cancel-button' onClick={() => handleCancel()}>Cancel</button>
+                <button className='my-account-buttons' id='my-account-save-changes-button' onClick={() => handleSaveChanges()}>Save Changes</button>
             </div>
         )}
-        <button onClick={() => handleDeleteAccount()}>Delete Account</button>
+        <button className='my-account-buttons' onClick={() => handleDeleteAccount()}>Delete Account</button>
       </body>
     )
 }

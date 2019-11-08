@@ -28,6 +28,10 @@ function Register(props){
     }
   }
 
+  const handleCancelRegister = () => {
+      props.history.push('/')
+  }
+
     return(
         <body>
             <div id='register-form'>
@@ -41,7 +45,11 @@ function Register(props){
                 <input
                 type='password' className='register-input' placeholder='Confirm Password' onChange={e => setConfirmPassword(e.target.value)} />
 
-                <button id='register-button' onClick={() => handleRegister()}>Register</button>
+                <nav id='register-nav-buttons'>
+                    <button id='cancel-button' onClick={() => handleCancelRegister()}>Cancel</button>
+                    <button id='register-button' onClick={() => handleRegister()}>Register</button>
+                </nav>
+                
             </div>
         </body>
     )

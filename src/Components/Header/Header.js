@@ -50,8 +50,10 @@ function Header(props){
             props.updateUser(res.data)
             props.history.push('/home')
         })
-        .catch(err => console.log(err))
-        props.history.push('/home')
+        .catch(err => {
+            console.log(err)
+            alert('Incorrect password.')
+        })
     }
 
     // Self-explanatory.

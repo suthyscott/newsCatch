@@ -57,6 +57,15 @@
     width: 30vw;
 }
 
+#article-save-button {
+    width: 20vw;
+}
+
+.article-action-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 @media (min-width: 1000px){
     .article {
         display: flex;
@@ -92,6 +101,14 @@
     
     #view-article-button {
         width: 20vw
+    }
+
+    #article-remove-button {
+        width: 15vw;
+    }
+
+    #article-save-button {
+        width: 10vw;
     }
 
 }

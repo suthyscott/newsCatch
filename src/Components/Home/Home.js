@@ -17,7 +17,7 @@ function Home(props){
         .catch(err => console.log(err))
     }, [])
 
-    // console.log(feed)
+    console.log(feed)
 
     const handleSearch = () => {
         axios.get(`https://newsapi.org/v2/everything?q=${search}&apiKey=${config.apiKey}`)
@@ -34,7 +34,12 @@ function Home(props){
                 className='search-input'
                 placeholder='Enter keyword here'
                 name='search'
-                onChange={e => setSearch(e.target.value)} />
+                onChange={e => setSearch(e.target.value)}
+                onKeyDown={e => {
+                    if(e.key === 'Enter'){
+                        handleSearch()
+                    }
+                }} />
 
                 <button onClick={() => handleSearch()} className='search-button' >Search</button>
             </section>

@@ -6,6 +6,7 @@ import axios from 'axios';
 import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {passArticle} from '../../ducks/articleReducer';
+import ReactPlayer from 'react-player';
 
 function ArticleDisplay(props){
     const {article} = props
@@ -23,14 +24,14 @@ function ArticleDisplay(props){
 
 
     // this function fires a post request that sends the selected article to the database. 
-    const {name} = source
     const handleSaveArticle = () => {
-        axios.post('/api/article', {title, name, author, description, url, urlToImage, content, publishedAt})
+        axios.post('/api/article', {title, name: source.name, author, description, url, urlToImage, content, publishedAt})
     }
 
     // One of these will always be undefined, depending on whether article is coming from Home(Google API) or SavedArticles(the database). The ternary below toggles to display whichever one is truthy. 
     var articlePic = urlToImage
     var savedArticlePic = article.url_to_image
+    var articleVid = url
 
     const viewArticle = () => {
         // console.log('hit viewArticle', article, sentiment, entities, keyPhrases)
@@ -53,12 +54,18 @@ function ArticleDisplay(props){
         }
     }, [])
 
+    console.log(props.article)
+
     return(
         <main className='article-display'>
             <div className='article' >
                 {articlePic ? (
                     <img className='img' src={articlePic}/>
-                ) : (<img className='img' src={savedArticlePic}/>)}
+                ) : (savedArticlePic ? (
+                    <img className='img' src={savedArticlePic}/>
+                ) : (
+                    <ReactPlayer url={articleVid} className='img'/>
+                ))}
 
                 <section className='text-and-buttons'>
                     <h1 className='headlines'>{title}</h1>             
@@ -67,13 +74,13 @@ function ArticleDisplay(props){
                     
                     
                     {pathIsSavedArticles ? (
-                        <section>
+                        <section className='article-action-buttons'>
                             <button className='article-nav-buttons' id='article-remove-button' onClick={() => removeArticle()}>Remove</button>
                             <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' id='view-article-button' onClick={() => viewArticle()} >View Article</button></Link>
                         </section>                        
                         ) : (
-                        <section>
-                            <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
+                        <section className='article-action-buttons'>
+                            <button className='article-nav-buttons' id='article-save-button' onClick={() => handleSaveArticle()}>Save</button>
                             <Link to={`/singlearticle/:${props.match.params.id}`}><button className='article-nav-buttons' id='view-article-button' onClick={() => viewArticle()} >View Article</button></Link>
                         </section>
                        

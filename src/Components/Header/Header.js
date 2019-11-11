@@ -123,7 +123,12 @@ function Header(props){
                         type='password'
                         className='login-input'
                         placeholder='password'
-                        onChange={e => setUserPassword(e.target.value)} />
+                        onChange={e => setUserPassword(e.target.value)}
+                        onKeyDown={e => {
+                            if(e.key === 'Enter'){
+                                handleLoginUser()
+                            }
+                        }} />
                         <button id='login-button' onClick={() => handleLoginUser()}>Login</button>
                     </div>
                 )}

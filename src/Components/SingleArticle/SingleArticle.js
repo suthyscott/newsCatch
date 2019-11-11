@@ -3,8 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './SingleArticle.css';
 import SentimentPieChart from '../SentimentPieChart/SentimentPieChart';
-import EntitiesDisplay from '../EntitiesDisplay/EntitiesDisplay';
-import KeyPhrasesDisplay from '../KeyPhrasesDisplay/KeyPhrasesDisplay';
+import axios from 'axios';
 
 function SingleArticle(props){
     const {article} = props
@@ -144,7 +143,7 @@ function SingleArticle(props){
 
     const renderKeyPhrasesTable = () => {
         return keyPhrases.KeyPhrases.map((e,i) =>{
-            const {Score, Text, Type} = e
+            const {Score, Text} = e
             return (
                 <tr className='entities-tr'>
                     <td className='key-phrases-property' id='text-td'>{Text}</td>
@@ -166,6 +165,11 @@ function SingleArticle(props){
         return header.map((key, i) => {
             return <th className='key-phrases-table-header' key={i}>{key}</th>
         })
+    }
+
+    // const {name} = source
+    const handleSaveArticle = () => {
+        axios.post('/api/article', {title, name: source.name, author, description, url, urlToImage, content, publishedAt})
     }
 
     console.log(props)
@@ -211,13 +215,16 @@ function SingleArticle(props){
             ) : (
                 <div>
                         <p className='article-title' >{props.article.title}</p> 
-                        {props.article.urlToImage ? (<img className='article-image' src={props.article.urlToImage}/>) : <img className='article-image' src={props.article.url_to_image}/>}
+                        {props.article.urlToImage ? (<img className='article-image' src={props.article.urlToImage} alt={props.article.description}/>) : <img className='article-image' src={props.article.url_to_image} alt={props.article.description}/>}
                         <p className='article-text'>{props.article.content ? (
                             props.article.content
                         ) : (
                             props.article.description
                         )}</p>   
-                        <button className='read-article-button'><a className='article-link' href={`${props.article.url}`} target='_blank'>Read Full Article</a></button>
+                        <section>
+                            <button className='read-article-button'><a className='article-link' href={`${props.article.url}`} target='_blank' rel='noopener noreferrer'>Read Full Article</a></button>
+                            <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
+                        </section>
                     </div>
             )}
         </body>

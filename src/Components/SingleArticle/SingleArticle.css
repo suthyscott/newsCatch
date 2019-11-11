@@ -73,7 +73,6 @@
     width: 100%;
     position: relative;
     bottom: 5vh;
-
 }
 
 .entities-table {
@@ -158,5 +157,91 @@
         margin-top: 2vh;
         height: 6vh;
         width: 60vw;
+    }
+
+    
+    .analysis-footer {
+        height: 5vh;
+        width: 100vw;
+        background-color: rgb(50,143,255);
+        z-index: 5;
+        position: fixed;
+        bottom: 0;
+        padding: 3vh;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    
+    #analysis {
+        background-color: rgb(50,143,255);
+        height: 900%;
+        width: 100vw;
+        position: relative;
+        top: -4vh
+    }
+
+        
+    .entities-table {
+        padding: 1vh 1vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        width: 90vw;
+    }
+
+    .entities-table-header {
+        font-family: 'Montserrat';
+        font-size: 2.5vh;
+        font-weight: bold;
+        color: white;
+        word-wrap: normal;
+        padding-left: 5vw;
+        padding-right: 2vw
+    }
+
+    .entities-property {
+        padding-left: 5vh;
+    }
+
+    #text-td {
+        width: 10vw;
+        height: auto;
+        padding: 2vh 0;
+        overflow-wrap: normal;
+        margin: 2vh;
+    }
+
+    #type-td {
+        width: 0;
+    }
+
+    .entities-tr {
+        color: white;
+        font-family: 'Montserrat';
+    }
+
+    .key-phrases-table {
+        padding: 1vh 5vw;
+        margin-left: 1vw;
+        margin-right: 1vw;
+        width: 90vw;
+    }
+
+    .key-phrases-property {
+        padding: 0vh 0vw;
+    }
+
+    .key-phrases-table-header {
+        font-family: 'Montserrat';
+        font-size: 4vh;
+        font-weight: bold;
+        color: white;
+        padding: 0vh 4vw;
+    }
+
+    .entities-property {
+        margin: 1vh;
     }
  }

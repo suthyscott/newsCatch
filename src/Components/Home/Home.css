@@ -3,7 +3,7 @@
     font-family: 'Montserrat';
     color: rgb(50,143,255);
     position: relative;
-    top: 10vh;
+    top: 6vh;
     padding: 5vh;
 }
 
@@ -48,6 +48,11 @@
 }
 
 @media(min-width: 1000px){
+
+    #welcome-header {
+        top: 10vh
+    }
+
     .search-input {
         height: 6vh;
         width: 40vw;

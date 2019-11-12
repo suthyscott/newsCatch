@@ -46,6 +46,8 @@
 @media(max-width: 600px){
     .landing-body {
         height: 84vh;
+        position: relative;
+        top: 6vh;
     }
     .landing-img {
         height: 59vh;

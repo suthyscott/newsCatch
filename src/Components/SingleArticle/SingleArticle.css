@@ -188,7 +188,7 @@
 
     .article-image {
         height: auto;
-        max-width: 75vw;
+        max-width: 70vw;
         margin-right: 5vw;
     }
 
@@ -204,7 +204,7 @@
         font-weight: bold;
         margin-bottom: 3vh;
         text-align: center;
-        padding-left: none;
+        padding: 0;
     }
     
     .article-text {
@@ -212,11 +212,25 @@
         font-size: 3.5vh;
         margin-top: 5vh;
         text-align: center;
+        padding: 0;
+    }
+
+    .single-article-action-buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 5vh;
+        margin: 0;
+    }
+
+    #single-article-save-button {
+        width: 30vw;
     }
 
 
     .read-article-button {
-        margin-bottom: 10vh;
+        margin-bottom: 2vh;
         margin-top: 2vh;
         height: 6vh;
         width: 60vw;

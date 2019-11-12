@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios'
-import './Landing.css'
+import axios from 'axios';
+import './Landing.css';
 import {Slide} from 'react-slideshow-image';
-import Microlink from '@microlink/react';
 import ReactPlayer from 'react-player';
+import {withRouter} from 'react-router-dom'
 
 const config = require('../../Config');
 
-function Landing(){
-    const [feed, setFeed] = useState([{urlToImage: 'hello world', title: 'live long and prosper'}, {urlToImage: 'hello world', title: 'live long and prosper'}, {urlToImage: 'hello world', title: 'live long and prosper'}])
+function Landing(props){
+    const [feed, setFeed] = useState([{urlToImage: 'hello world', title: 'live long and prosper', url: 'star trek'}, {urlToImage: 'hello world', title: 'live long and prosper', url: 'star trek'}, {urlToImage: 'hello world', title: 'live long and prosper', url: 'star trek'}])
     
     useEffect(() => {
         axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${config.apiKey}`)
@@ -16,14 +16,7 @@ function Landing(){
         .catch(err => console.log(err))
     }, [])
 
-    // console.log(feed[0].urlToImage)
-    // console.log(feed[1])
-    // console.log(feed[2])
-    const slideImages = [
-        `${feed[0].urlToImage}`, 
-        `${feed[1].urlToImage}`,
-        `${feed[2].urlToImage}`
-    ]
+
 
     const properties = {
         duration: 5000,
@@ -33,9 +26,7 @@ function Landing(){
         arrows: true
     }
 
-    // console.log(slideImages[0])
-    // console.log(slideImages[1])
-    // console.log(slideImages[2])
+    console.log(feed)
 
     const slideShow = () => {
         return (
@@ -44,7 +35,9 @@ function Landing(){
                     <Slide {...properties}>
                         <section className='landing-section'>
                             {feed[0].urlToImage ? (
-                            <section className='landing-img' style={{backgroundImage: `url(${feed[0].urlToImage})`}}></section>
+                                <a href={`${feed[0].url}`}  className='landing-img' style={{backgroundImage: `url(${feed[0].urlToImage})`}}>
+                                
+                                </a>
                             ) : (
                                 <ReactPlayer
                                 url={`${feed[0].url}`} />
@@ -54,7 +47,7 @@ function Landing(){
 
                         <section className='landing-section'>
                             {feed[1].urlToImage ? (
-                            <section className='landing-img' style={{backgroundImage: `url(${feed[1].urlToImage})`}}></section>
+                            <a href={`${feed[1].url}`} className='landing-img' style={{backgroundImage: `url(${feed[1].urlToImage})`}}></a>
                             ) : (
                                 <ReactPlayer
                                 url={`${feed[1].url}`} />
@@ -64,7 +57,7 @@ function Landing(){
 
                         <section className='landing-section'>
                             {feed[2].urlToImage ? (
-                            <section className='landing-img' style={{backgroundImage: `url(${feed[2].urlToImage})`}}></section>
+                            <a href={`${feed[0].url}`} className='landing-img' style={{backgroundImage: `url(${feed[2].urlToImage})`}}></a>
                             ) : (
                                 <ReactPlayer
                                 url={`${feed[2].url}`} />
@@ -91,4 +84,4 @@ function Landing(){
     )
 }
 
-export default Landing
+export default withRouter(Landing)

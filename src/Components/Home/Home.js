@@ -27,7 +27,7 @@ function Home(props){
 
     return(
         <main>
-            <h1 id='welcome-header'>welcome to <span id='greeting-newscatch'>newsCatch!</span></h1>
+            <h1 id='welcome-header'>welcome to <span id='greeting-newscatch'>newsCatch</span>!</h1>
             <Landing />
             <section className='search-box'>
                 <input 

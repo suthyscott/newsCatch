@@ -61,9 +61,14 @@ function ArticleDisplay(props){
         <main className='article-display'>
             <div className='article' >
                 {articlePic ? (
-                    <img className='img' src={articlePic}/>
+                    <a href={`${articleVid}`}>
+                        <img className='img' src={articlePic}/>
+                    </a>
+                    
                 ) : (savedArticlePic ? (
-                    <img className='img' src={savedArticlePic}/>
+                    <a href={`${articleVid}`}>
+                        <img className='img' src={savedArticlePic}/>
+                    </a>
                 ) : (
                     <ReactPlayer url={articleVid}
                     playing='true'
@@ -71,6 +76,7 @@ function ArticleDisplay(props){
                     muted='true'
                     width='100%'
                     height='200px' />
+                    // <p className='logo'>newsCatch</p>
 
                 ))}
 

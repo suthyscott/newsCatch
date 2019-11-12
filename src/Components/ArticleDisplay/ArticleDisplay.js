@@ -55,6 +55,7 @@ function ArticleDisplay(props){
     }, [])
 
     console.log(props.article)
+    console.log(articleVid)
 
     return(
         <main className='article-display'>
@@ -64,7 +65,13 @@ function ArticleDisplay(props){
                 ) : (savedArticlePic ? (
                     <img className='img' src={savedArticlePic}/>
                 ) : (
-                    <ReactPlayer url={articleVid} className='img'/>
+                    <ReactPlayer url={articleVid}
+                    playing='true'
+                    loop='true'
+                    muted='true'
+                    width='100%'
+                    height='200px' />
+
                 ))}
 
                 <section className='text-and-buttons'>

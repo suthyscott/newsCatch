@@ -83,6 +83,10 @@
     } 
 
     .articles-list{
+        display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
+        margin-top: 6vh;
+        justify-content: center;
     }
 }

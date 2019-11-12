@@ -213,19 +213,25 @@ function SingleArticle(props){
                     ) : null }
             </section>
             ) : (
-                <div>
-                        <p className='article-title' >{props.article.title}</p> 
+                <div id='article-info-display'>
+                    <section className='image-headline'> 
                         {props.article.urlToImage ? (<img className='article-image' src={props.article.urlToImage} alt={props.article.description}/>) : <img className='article-image' src={props.article.url_to_image} alt={props.article.description}/>}
+                     </section>
+                    
+                    <section className='text-buttons'>
+                        <p className='article-title' >{props.article.title}</p> 
                         <p className='article-text'>{props.article.content ? (
                             props.article.content
                         ) : (
                             props.article.description
                         )}</p>   
-                        <section>
+                        <section className='single-article-action-buttons'>
                             <button className='read-article-button'><a className='article-link' href={`${props.article.url}`} target='_blank' rel='noopener noreferrer'>Read Full Article</a></button>
-                            <button className='article-nav-buttons' onClick={() => handleSaveArticle()}>Save</button>
+                            <button id='single-article-save-button' onClick={() => handleSaveArticle()}>Save</button>
                         </section>
-                    </div>
+                    </section>
+
+                </div>
             )}
         </body>
     )

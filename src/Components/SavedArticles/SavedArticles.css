@@ -1,8 +1,7 @@
-.search-input {
-    /* height: 10px;
-    width: 10vw; */
-    padding: 10px;
-    position: relative;
-    top: 20vh;
-
+.saved-articles-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 6vh;
+    justify-content: center;
 }

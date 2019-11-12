@@ -3,9 +3,24 @@
     top: 15vh;
 }
 
+#article-info-display {
+    height: 75vh;
+    width: 90vw;
+    margin: 0 5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 5vh
+}
+
 .article-image {
-    height: auto;
-    max-width: 70%;
+    height: 50vh;
+    max-width: auto;
+}
+
+.image-headline {
+    display: flex;
+    align-items: flex-start;
 }
 
 .analysis-footer {
@@ -38,25 +53,58 @@
 
 .article-title {
     font-family: 'Montserrat';
-    font-size: 5.5vh;
+    font-size: 5vh;
     font-weight: bold;
     margin-bottom: 3vh;
+    margin-top: 3vh;
+    text-align: right;
+    padding-left: 10vh;
 }
 
 .article-text {
     font-family: 'Montserrat';
-    font-size: 3;
+    font-size: 3vh;
     margin-top: 5vh;
+    text-align: right;
+    padding-left: 10vh;
+}
+
+.single-article-action-buttons {
+    margin-top: 10vh;
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+.text-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .read-article-button {
-    margin-bottom: 10vh;
+    margin-bottom: 2vh;
     margin-top: 2vh;
     color: rgb(50,143,255);
     border: .5px solid rgb(50,143,255);
     background-color: white;
     height: 6vh;
-    width: 30vw;
+    width: 20vw;
+    border-radius: 20px;
+    font-family: 'Montserrat';
+    font-size: 3.5vh;
+}
+
+#single-article-save-button {
+    margin: 2vh;
+    color: rgb(50,143,255);
+    border: .5px solid rgb(50,143,255);
+    background-color: white;
+    height: 6vh;
+    width: 10vw;
     border-radius: 20px;
     font-family: 'Montserrat';
     font-size: 3.5vh;
@@ -137,18 +185,33 @@
     .single-article-body {
         top: 10vh
     }
+
+    .article-image {
+        height: auto;
+        max-width: 75vw;
+        margin-right: 5vw;
+    }
+
+    #article-info-display {
+        display: flex;
+        flex-direction: column;
+        margin: none
+    }
     
     .article-title {
         font-family: 'Montserrat';
         font-size: 5vh;
         font-weight: bold;
         margin-bottom: 3vh;
+        text-align: center;
+        padding-left: none;
     }
     
     .article-text {
         font-family: 'Montserrat';
         font-size: 3.5vh;
         margin-top: 5vh;
+        text-align: center;
     }
 
 

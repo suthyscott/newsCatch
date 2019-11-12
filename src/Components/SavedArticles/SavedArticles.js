@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ArticleDisplay from '../ArticleDisplay/ArticleDisplay'
+import './SavedArticles.css'
 
 function SavedArticles(){
     const [feed, setFeed] = useState([])
@@ -35,10 +36,12 @@ function SavedArticles(){
                     <button onClick={() => handleSearch()} className='button' >Search</button>
                 </section>
 
-                {feed.map((e, i) => {
-                    console.log(e)
-                    return <ArticleDisplay article={e} key={'saved-article',i} removedArticle={removedArticle} setRemovedArticle={setRemovedArticle}/>
-                })}
+                <article className='saved-articles-list'>
+                    {feed.map((e, i) => {
+                        console.log(e)
+                        return <ArticleDisplay article={e} key={'saved-article',i} removedArticle={removedArticle} setRemovedArticle={setRemovedArticle}/>
+                    })}
+                </article>
             </article>
         </main>
     )

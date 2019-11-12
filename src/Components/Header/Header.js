@@ -44,7 +44,9 @@ function Header(props){
 
     // Self-explanatory.
     const handleLoginUser = () => {
-        axios.post('/api/auth/login', {email: userEmail, password: userPassword})
+        if(!userEmail || !userPassword){
+            alert('You must fill enter your username and password')
+        } else {axios.post('/api/auth/login', {email: userEmail, password: userPassword})
         .then(res => {
             console.log(res.data)
             props.updateUser(res.data)
@@ -53,7 +55,7 @@ function Header(props){
         .catch(err => {
             console.log(err)
             alert('Incorrect password.')
-        })
+        })}
     }
 
     // Self-explanatory.
@@ -72,7 +74,7 @@ function Header(props){
         return(
             <main  className='header'>                
                 <header>
-                    <h1 className='logo'>newsCatch</h1>
+                    <h1 className='logo' onClick={() => props.history.push('/home')}>newsCatch</h1>
                 </header>
                 <div id='menu-hamburger-icon'>
                     <i id='hamburger-icon' className='fas fa-bars fa-2x' onClick={toggleMenu} />

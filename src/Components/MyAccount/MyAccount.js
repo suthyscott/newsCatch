@@ -112,8 +112,11 @@ function MyAccount(props){
                 placeholder='Confirm New Password'
                 onChange={(e) => setConfirmNewPassword(e.target.value)} /><br/>
 
-                <button className='my-account-buttons' id='my-account-cancel-button' onClick={() => handleCancel()}>Cancel</button>
-                <button className='my-account-buttons' id='my-account-save-changes-button' onClick={() => handleSaveChanges()}>Save Changes</button>
+                <section className='edit-option-buttons'>
+                    <button className='my-account-buttons' id='my-account-cancel-button' onClick={() => handleCancel()}>Cancel</button>
+                    <button className='my-account-buttons' id='my-account-save-changes-button' onClick={() => handleSaveChanges()}>Save Changes</button>
+                </section>
+
                 <button className='my-account-buttons' onClick={() => handleDeleteAccount()}>Delete Account</button>
             </div>
         )}

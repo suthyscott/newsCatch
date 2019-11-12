@@ -23,6 +23,7 @@
     font-family: 'Montserrat';
     font-size: 3vh;
     color: rgb(132, 154, 180);
+    padding: 2vh;
 }
 
 .info-input {
@@ -30,7 +31,7 @@
     border-radius: 20px;
     border: solid .5px rgb(50,143,255);
     padding: 1vh 2vw;
-    color: rgb(50,143,255);
+    color: rgb(126, 154, 189);
 }
 
 #my-account-header {

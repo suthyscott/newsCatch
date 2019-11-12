@@ -5,6 +5,10 @@
     font-weight: bold;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .header {
     height: 9vh;
     width: 100vw;

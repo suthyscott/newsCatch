@@ -39,8 +39,9 @@ function Landing(props){
                                 
                                 </a>
                             ) : (
-                                <ReactPlayer
-                                url={`${feed[0].url}`} />
+                                // <ReactPlayer
+                                // url={`${feed[1].url}`} />
+                                <div className='landing-img'><p className='video-filler'>newsCatch</p></div>
                             )}
                             <div className='landing-headline-container'><span className='landing-headlines'>{feed[0].title}</span></div>
                         </section>
@@ -49,18 +50,21 @@ function Landing(props){
                             {feed[1].urlToImage ? (
                             <a href={`${feed[1].url}`} className='landing-img' style={{backgroundImage: `url(${feed[1].urlToImage})`}}></a>
                             ) : (
-                                <ReactPlayer
-                                url={`${feed[1].url}`} />
+                                // <ReactPlayer
+                                // url={`${feed[1].url}`} />
+                                <div className='landing-img'><p className='video-filler'>newsCatch</p></div>
+                                
                             )}
                             <div className='landing-headline-container'><span className='landing-headlines'>{feed[1].title}</span></div>
                         </section>
 
                         <section className='landing-section'>
                             {feed[2].urlToImage ? (
-                            <a href={`${feed[0].url}`} className='landing-img' style={{backgroundImage: `url(${feed[2].urlToImage})`}}></a>
+                            <a href={`${feed[2].url}`} className='landing-img' style={{backgroundImage: `url(${feed[2].urlToImage})`}}></a>
                             ) : (
-                                <ReactPlayer
-                                url={`${feed[2].url}`} />
+                                // <ReactPlayer
+                                // url={`${feed[1].url}`} />
+                                <div className='landing-img'><p className='video-filler'>newsCatch</p></div>
                             )}
                             <div className='landing-headline-container'><span className='landing-headlines'>{feed[2].title}</span></div>
                         </section>

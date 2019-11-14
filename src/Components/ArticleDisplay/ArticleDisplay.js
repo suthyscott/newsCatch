@@ -76,7 +76,7 @@ function ArticleDisplay(props){
                     muted='true'
                     width='100%'
                     height='200px' />
-                    // <p className='logo'>newsCatch</p>
+                    // <p className='img' id='article-image-filler'>newsCatch</p>
 
                 ))}
 

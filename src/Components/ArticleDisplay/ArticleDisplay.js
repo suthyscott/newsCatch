@@ -70,13 +70,13 @@ function ArticleDisplay(props){
                         <img className='img' src={savedArticlePic}/>
                     </a>
                 ) : (
-                    <ReactPlayer url={articleVid}
-                    playing='true'
-                    loop='true'
-                    muted='true'
-                    width='100%'
-                    height='200px' />
-                    // <p className='img' id='article-image-filler'>newsCatch</p>
+                    // <ReactPlayer url={articleVid}
+                    // playing='true'
+                    // loop='true'
+                    // muted='true'
+                    // width='100%'
+                    // height='200px' />
+                    <p className='img' id='article-image-filler'>newsCatch</p>
 
                 ))}
 

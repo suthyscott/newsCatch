@@ -1,5 +1,6 @@
  require('dotenv').config()
  
+ const path = require('path')
  const express = require('express')
  const massive = require('massive')
  const session = require('express-session')
@@ -39,6 +40,9 @@ app.delete('/api/auth/user', authCtrl.deleteAccount)
 app.post('/api/article', ctrl.saveArticle)
 app.delete('/api/article/:id', ctrl.deleteArticle)
 app.get('/api/savedarticles', ctrl.getSavedArticles)
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 
  const port = SERVER_PORT

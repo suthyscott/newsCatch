@@ -14,7 +14,12 @@
 
  app.use( express.static( `${__dirname}/../build` ) );
 
- massive(CONNECTION_STRING).then(db => {
+ massive({
+    connectionString: CONNECTION_STRING,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  }).then(db => {
      app.set('db', db);
      console.log('DB connected')
  })
